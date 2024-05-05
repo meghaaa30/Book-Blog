@@ -176,6 +176,8 @@
     width: 100%;
     height: 20;
     color: #F5F5DC;
+    bottom: 0;
+    position: fixed;
     /* padding: 50px 50px 50px 100px; */
   }
   
@@ -220,7 +222,8 @@
     font-weight: 400;
     line-height: 1.43;
     letter-spacing: 0.01071em;
-    background-color:  #6b4423 ;
+    background-color:  #6b4423;
+    overflow: hidden;
   }
   @media print {
     body {

@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../images/logo.jpg";
-import homeImage from "../images/home.png"
+import homeImage from "../images/home.png";
+import BookStrip from "./BookStrip";
 import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
 
 function Header() {
@@ -32,7 +33,8 @@ function Header() {
       </div>
       <Switch>
         <Route exact path="/">
-          <img className="bottom-space" src={homeImage} alt="" />
+          {/* <img className="bottom-space" src={homeImage} alt="" /> */}
+          <BookStrip />
         </Route>
         {/* <Route path="/discover"></Route>
         <Route path="/add"></Route>
