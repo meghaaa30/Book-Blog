@@ -1,8 +1,9 @@
 import React from "react";
 import logo from "../images/logo.jpg";
-import homeImage from "../images/home.png";
+
 import BookStrip from "./BookStrip";
 import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
+import AddReview from "./Addreview";
 
 function Header() {
 
@@ -36,6 +37,7 @@ function Header() {
           {/* <img className="bottom-space" src={homeImage} alt="" /> */}
           <BookStrip />
         </Route>
+        <Route><AddReview></AddReview></Route>
         {/* <Route path="/discover"></Route>
         <Route path="/add"></Route>
         <Route path="/about"></Route> */}
@@ -45,3 +47,5 @@ function Header() {
 }
 
 export default Header;
+
+
