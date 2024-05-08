@@ -1,8 +1,9 @@
 .addreview{
     /* background-color: aqua; */
-    padding-top: 1010px;
+    padding-top: 100px;
     border: 10px 10px;
     padding-left: 40px;
+    height: 50;
 }
 
 .form-group{
@@ -17,6 +18,7 @@
     flex-direction: column;
     margin-left: 320px;
 }
+
 .texting{
      height: 100px;
 }
