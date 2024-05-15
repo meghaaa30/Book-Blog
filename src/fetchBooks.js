@@ -5,7 +5,7 @@ const fetchBooks = async () => {
         method: 'GET',
         url: 'https://openlibrary.org/subjects/romance.json',
         params: {
-            limit: 100, // Number of results to fetch
+            limit: 20, // Number of results to fetch
         },
     };
 
