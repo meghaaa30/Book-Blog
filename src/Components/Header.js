@@ -1,45 +1,54 @@
 import React from "react";
 import logo from "../images/logo.jpg";
 import BookStrip from "./BookStrip";
-import AddReview from "./AddReview";
-import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
-
+import { BrowserRouter, NavLink, Switch, Route } from "react-router-dom";
+import AddReview from "./ReviewAdded"
+import Review from "../Context/Reviewss"
+import Discover from "./Discover";
+import ReviewAdded from "./ReviewAdded";
 function Header() {
 
   return (
-    <BrowserRouter forceRefresh={true}>
+    <>
+   
+    <BrowserRouter>
       <div className="app-root-1">
         <header className="Paper-root AppBar-root AppBar-positionStatic AppBar-colorPrimary Paper-elevation4">
           <div className="Toolbar-root Toolbar-regular header-appBar-13 Toolbar-gutters">
             <div className="header-left-4"></div>
-            <Link to="/"><img className="header-logo-11" src={logo} alt="" /></Link>
+            <NavLink to="/"><img className="header-logo-11" src={logo} alt="" /></NavLink>
             <div className="header-vertical-9"></div>
-            <Link to="/">
+            <NavLink to="/">
               <h5 className="Typography-root header-logo-text">Book-Blog</h5>
-            </Link>
+            </NavLink>
             <div className="header-empty-6"></div>
             <div className="header-space-8"></div>
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3">
-              <Link to="/discover">Discover</Link>
+              <NavLink to="/discover">Discover</NavLink>
             </button>
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3">
-              <Link to="/add">Add Review</Link>
+              <NavLink to="/add">Add Review</NavLink>
             </button>
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3">
-              <Link to="/about">About Us</Link>
+              <NavLink to="/about">About Us</NavLink>
             </button>
           </div>
         </header>
       </div>
       <Switch>
         <Route exact path="/">
-          <BookStrip />
+          {/* <img className="bottom-space" src={homeImage} alt="" /> */}
+          <BookStrip /> 
         </Route>
-        <Route path="/add"><AddReview /></Route>
-        {/* <Route path="/discover"></Route>
-        <Route path="/about"></Route> */}
+        <Route path="/add"><ReviewAdded></ReviewAdded></Route>
+        <Route path="/discover"><Discover></Discover></Route>
+        {/* // <Route path="/add"></Route>
+        // <Route path="/about"></Route> */ }
+  
       </Switch>
     </BrowserRouter>
+    
+    </>
   );
 }
 

@@ -1,0 +1,29 @@
+.reviews{
+    padding-top: 80px;   
+}
+
+.cardreview{
+    float: left;
+  width: 20%;
+  justify-content: center;
+  
+}
+
+.card{
+      margin-left :4px;
+    margin-top: 30px;
+    border-radius: 4px;
+    color:  #F5F5DC;
+}
+
+.card-img-top{
+    width: 157px;
+    height: 200px;
+    padding-top: 6px;
+}
+
+.card-text{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+}
+
