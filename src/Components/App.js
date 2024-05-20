@@ -1,17 +1,25 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import Review from "../Context/Reviewss";
+import SignUp from './SignUp';
+import SignIn from './SignIn';
+import { ReviewProvider } from "../Context/reviewContext";
+import { BrowserRouter, Route } from "react-router-dom";
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+
 function App() {
   return (
-    <div className="App">
-       <Review>
-      <Header />
-      {/* <Footer /> */}
-    </Review>
-    </div>
+    <BrowserRouter forceRefresh={true}>
+      <div className="App">
+        <ReviewProvider>
+          <Header />
+          <Route exact path="/sign-up" component={SignUp} />
+          <Route exact path="/sign-in" component={SignIn} />
+          <Footer />
+        </ReviewProvider>
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
-

@@ -1,22 +1,24 @@
-import React, { useContext} from 'react'
-import reviewContext from '../Context/reviewContext'
+import React, { useContext, useEffect } from 'react'
+import { ReviewContext } from '../Context/reviewContext'
 import ReviewItems from './ReviewItems'
 
 function ReviewsAll() {
-   const Context= useContext(reviewContext)
-   const {reviews}=Context
+  const Context = useContext(ReviewContext);
+  const { reviews, getReview } = useContext(ReviewContext);
+  console.log(reviews);
+  useEffect(() => {
+    getReview()
+  }, [])
+
+
   return (
     <div>
-      
-      < div className="reviews">
-                 <h1>Your Reviews</h1>
-                {reviews.map((review)=>{
-                       return <ReviewItems key={review._id} review = {review}/>
-                })}
-                
-            
-            </div>
-            
+      <div className="reviews">
+        <h1>Your Reviews</h1>
+        {reviews.map((review) => {
+          return <ReviewItems key={review._id} review={review} />
+        })}
+      </div>
     </div>
   )
 }
