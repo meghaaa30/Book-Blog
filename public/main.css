@@ -19,7 +19,6 @@
     
   }
 
-
   .AppBar-colorPrimary {
     color: #F5F5DC;
     background-color: #361a03;
@@ -86,6 +85,7 @@
 
   .header-logo-text {
     font-size: 20px;
+    color: #F5F5DC;
   }
 
   .header-empty-6 {
@@ -153,6 +153,7 @@
 
   .Button-text {
     padding: 6px 8px;
+    color: #F5F5DC !important;
   }
 
   .header-navButtons-3 {
@@ -209,7 +210,7 @@
   }
 
   a {
-    color: #F5F5DC;
+    color: #F5F5DC !important;
     text-decoration: none !important;
   }
   

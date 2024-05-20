@@ -1,10 +1,15 @@
-const mongoose= require('mongoose');
-const mongoURI= "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5"
-                 
-const connectTo=()=>{
-    mongoose.connect(mongoURI, ()=>{
-        console.log("connected");
-    })
-}
+const mongoose = require('mongoose');
+const mongoURI = "mongodb+srv://bookblog:sly8132i3mBpmlQu@cluster0.imtwo9c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-module.exports= connectTo;
+const connectToMongo = async () => {
+    try {
+        mongoose.set('strictQuery', false)
+        mongoose.connect(mongoURI)
+        console.log('Mongo connected')
+    }
+    catch (error) {
+        console.log(error)
+        process.exit()
+    }
+}
+module.exports = connectToMongo;
