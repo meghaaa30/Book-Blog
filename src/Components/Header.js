@@ -1,16 +1,13 @@
 import React from "react";
-import logo from "../images/logo.jpg";
+import logo from "../assets/images/logo.jpg";
 import BookStrip from "./BookStrip";
 import { BrowserRouter, NavLink, Switch, Route } from "react-router-dom";
-import AddReview from "./ReviewAdded"
-import Review from "../Context/Reviewss"
 import Discover from "./Discover";
 import ReviewAdded from "./ReviewAdded";
+
 function Header() {
 
   return (
-    <>
-   
     <BrowserRouter>
       <div className="app-root-1">
         <header className="Paper-root AppBar-root AppBar-positionStatic AppBar-colorPrimary Paper-elevation4">
@@ -37,18 +34,14 @@ function Header() {
       </div>
       <Switch>
         <Route exact path="/">
-          {/* <img className="bottom-space" src={homeImage} alt="" /> */}
-          <BookStrip /> 
+          <BookStrip />
         </Route>
-        <Route path="/add"><ReviewAdded></ReviewAdded></Route>
-        <Route path="/discover"><Discover></Discover></Route>
-        {/* // <Route path="/add"></Route>
-        // <Route path="/about"></Route> */ }
-  
+        <Route path="/add"><ReviewAdded /></Route>
+        <Route path="/discover"><Discover /></Route>
+        {/* // <Route path="/about"></Route> */}
+
       </Switch>
     </BrowserRouter>
-    
-    </>
   );
 }
 
