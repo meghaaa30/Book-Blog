@@ -3,7 +3,6 @@ import fetchBooks from '../fetchBooks';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { AuthContext } from '../Context/AuthContext';
 

@@ -55,6 +55,7 @@
 
   .Toolbar-gutters {
     padding-left: 16px;
+    
     padding-right: 16px;
   }
   @media (min-width: 600px) {
@@ -230,3 +231,7 @@
     }
   }
   
+.read{
+  height:200px;
+  color:black
+}
