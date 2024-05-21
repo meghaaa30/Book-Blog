@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
     MDBBtn,
@@ -12,12 +12,27 @@ import {
     from 'mdb-react-ui-kit';
 import GoogleIcon from '@mui/icons-material/Google';
 import { AuthContext } from '../Context/AuthContext';
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
+
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function SignIn() {
 
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     let history = useHistory();
     const { isAuth, setAuth } = useContext(AuthContext);
+
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                clientId: clientId,
+                scope: 'email',
+            });
+        }
+
+        gapi.load('client:auth2', start);
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,6 +59,35 @@ function SignIn() {
         setCredentials({ ...credentials, [e.target.id]: e.target.value })
     }
 
+    const sendGoogleToken = async (tokenId) => {
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/googlelogin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ idToken: tokenId }),
+            });
+
+            const json = await response.json();
+            console.log(json);
+
+            if (json.success) {
+                localStorage.setItem('auth-token', json.token);
+                setAuth(true);
+                history.push('/');
+            } else {
+                alert('Google Sign-Up failed');
+            }
+        } catch (error) {
+            console.log('GOOGLE SIGNUP ERROR', error);
+        }
+    };
+
+    const responseGoogle = (response) => {
+        sendGoogleToken(response.tokenId);
+    };
+
     return (
         <MDBContainer fluid style={{ marginTop: '100px' }}>
 
@@ -63,11 +107,30 @@ function SignIn() {
                                     Sign In
                                 </MDBBtn>
                             </form>
+
+                            <p className="mb-0" style={{ color: '#361a03' }}>Don't have an account? <a href="/sign-up" className="fw-bold mb-2" style={{ color: '#6b4423' }}>Sign Up</a></p>
+
                             <hr className="my-4" style={{ color: '#361a03' }} />
 
-                            <MDBBtn className="mb-2 w-100" size="lg" style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }}>
-                                <GoogleIcon style={{ color: '#F5F5DC' }} /> Sign in with google
-                            </MDBBtn>
+                            <GoogleLogin
+                                clientId={clientId}
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                                isSignedIn={true}
+                                render={(renderProps) => (
+                                    <MDBBtn
+                                        type='submit'
+                                        className="mb-2 w-100"
+                                        size="lg"
+                                        style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }}
+                                        onClick={renderProps.onClick}
+                                        disabled={renderProps.disabled}
+                                    >
+                                        <GoogleIcon style={{ color: '#F5F5DC' }} /> Sign in with Google
+                                    </MDBBtn>
+                                )}
+                            />
 
                         </MDBCardBody>
                     </MDBCard>
