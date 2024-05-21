@@ -43,7 +43,7 @@ function Header() {
         </Route>
         <Route path="/add"><ReviewAdded></ReviewAdded></Route>
         <Route path="/discover"><Discover></Discover></Route>
-       
+
       </Switch>
     </BrowserRouter>
   );

@@ -3,10 +3,16 @@ const User = require("../models/User");
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 const fetch = require('../middleware/fetch');
+const { OAuth2Client } = require('google-auth-library');
+require('dotenv').config();
 
-const JWT_SECRET = "megha is the bestest girlf"
+const JWT_SECRET = process.env.REACT_APP_JWT_SECRET;
+
+// Initialize OAuth2Client
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+const client = new OAuth2Client(clientId);
 
 router.post('/sign-up', [
     body('firstName', 'Enter a valid first name').isLength({ min: 3 }),
@@ -15,24 +21,20 @@ router.post('/sign-up', [
     body('password', 'Password must be at least 8 characters').isLength({ min: 8 }),
 ], async (req, res) => {
     let success = false;
-    // If there are validation errors, return bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
 
     try {
-        // Check whether the user with this email already exists
         let user = await User.findOne({ email: req.body.email });
         if (user) {
             return res.status(400).json({ error: "Sorry, a user with this email already exists" });
         }
 
-        // Hash the password using bcrypt
         const salt = await bcrypt.genSalt(10);
         const secPass = await bcrypt.hash(req.body.password, salt);
 
-        // Create a new user in the database
         user = new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -41,17 +43,14 @@ router.post('/sign-up', [
         });
         await user.save();
 
-        // Create a payload for the JWT token
         const payload = {
             user: {
                 id: user.id
             }
         };
 
-        // Generate a JWT token
         const authtoken = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
         success = true;
-        // Send the token in the response
         res.json({ success, authtoken });
 
     } catch (error) {
@@ -60,13 +59,11 @@ router.post('/sign-up', [
     }
 });
 
-// ROUTE 2: Authenticate a User using: POST "/api/auth/login". No login required
 router.post('/sign-in', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be blank').exists(),
 ], async (req, res) => {
     let success = false;
-    // If there are errors, return Bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -76,13 +73,11 @@ router.post('/sign-in', [
     try {
         let user = await User.findOne({ email });
         if (!user) {
-            success = false
             return res.status(400).json({ error: "Please try to login with correct credentials" });
         }
 
         const passwordCompare = await bcrypt.compare(password, user.password);
         if (!passwordCompare) {
-            success = false
             return res.status(400).json({ success, error: "Please try to login with correct credentials" });
         }
 
@@ -90,10 +85,10 @@ router.post('/sign-in', [
             user: {
                 id: user.id
             }
-        }
+        };
         const authtoken = jwt.sign(data, JWT_SECRET);
         success = true;
-        res.json({ success, authtoken })
+        res.json({ success, authtoken });
 
     } catch (error) {
         console.error(error.message);
@@ -101,17 +96,70 @@ router.post('/sign-in', [
     }
 });
 
+router.post('/googlelogin', async (req, res) => {
+    const { idToken } = req.body;
+
+    try {
+        const response = await client.verifyIdToken({
+            idToken,
+            audience: clientId,
+        });
+
+        const { email_verified, given_name, family_name, email } = response.payload;
+
+        if (email_verified) {
+            let user = await User.findOne({ email });
+
+            if (user) {
+                const authtoken = jwt.sign({ _id: user._id }, JWT_SECRET, {
+                    expiresIn: '7d',
+                });
+                return res.json({
+                    success: true,
+                    authtoken,
+                });
+            } else {
+                let password = email + JWT_SECRET;
+                user = new User({
+                    firstName: given_name,
+                    lastName: family_name,
+                    email: email,
+                    password: password,
+                });
+
+                const data = await user.save();
+                const authtoken = jwt.sign({ _id: data._id }, JWT_SECRET, {
+                    expiresIn: '7d',
+                });
+                return res.json({
+                    success: true,
+                    authtoken,
+                });
+            }
+        } else {
+            return res.status(400).json({
+                success: false,
+                error: 'Google login failed. Email not verified.',
+            });
+        }
+    } catch (error) {
+        console.log('ERROR GOOGLE LOGIN', error);
+        return res.status(400).json({
+            success: false,
+            error: 'Google login failed. Try again.',
+        });
+    }
+});
 
 router.post('/getUser', fetch, async (req, res) => {
     try {
-        userid = req.user.id
-        const users = await User.findById(userid).select('-password')
-        res.json(users)
+        const userid = req.user.id;
+        const users = await User.findById(userid).select('-password');
+        res.json(users);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Some error occurred");
     }
-    catch (error) {
-        console.log(error.message)
-        res.status(500).send("some error occured")
-    }
-})
+});
 
-module.exports = router
+module.exports = router;
