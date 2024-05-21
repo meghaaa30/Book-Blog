@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/images/logo.jpg";
+import logo from "../assets/images/logo.jpg";
 import BookStrip from "./BookStrip";
 import { BrowserRouter, NavLink, Switch, Route } from "react-router-dom";
 import Discover from "./Discover";
@@ -43,7 +44,7 @@ function Header() {
         </Route>
         <Route path="/add"><ReviewAdded></ReviewAdded></Route>
         <Route path="/discover"><Discover></Discover></Route>
-       
+
       </Switch>
     </BrowserRouter>
   );

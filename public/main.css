@@ -144,7 +144,7 @@
   }
   .Button-root:hover {
     text-decoration: none;
-    background-color:  #6b4423 ;
+    background-color:  #6b4423;
   }
   @media (hover: none) {
     .Button-root:hover {
