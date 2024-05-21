@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { ReviewContext } from "../Context/reviewContext";
 import {
   MDBBtn,
@@ -40,6 +40,7 @@ function ReviewAdded() {
     setIsFocused(false);
   }
 
+  
   return (
     <MDBContainer fluid style={{ marginTop: '50px' }}>
 
@@ -59,7 +60,7 @@ function ReviewAdded() {
                 <MDBInput wrapperClass='mb-4 w-100' label='Author Name' id='author' name='author' type='text' size="lg" onChange={onChange} />
                 <MDBTextArea wrapperClass='mb-4 w-100' label="Write a review" id="review" name='postContent' rows={7} type='text' size="lg" onChange={onChange} />
 
-                <MDBBtn size='lg' className="mb-2 w-100" style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }} type='submit' >
+                <MDBBtn size='lg' className="mb-2 w-100" style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }} type='submit'  >
                   Add Review
                 </MDBBtn>
               </form>

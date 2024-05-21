@@ -6,6 +6,7 @@ import SignIn from './SignIn';
 import { ReviewProvider } from "../Context/reviewContext";
 import { BrowserRouter, Route } from "react-router-dom";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import ReviewPage from "./Reviewpage";
 
 function App() {
   return (
@@ -13,9 +14,12 @@ function App() {
       <div className="App">
         <ReviewProvider>
           <Header />
+         
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/sign-in" component={SignIn} />
-          <Footer />
+          <Route exact path="/reviews" component={ReviewPage}/>
+          
+                <Footer />
         </ReviewProvider>
       </div>
     </BrowserRouter>
