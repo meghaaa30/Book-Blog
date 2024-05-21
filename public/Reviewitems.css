@@ -1,5 +1,5 @@
 .reviews{
-    padding-top: 80px;   
+    padding-top: 100px;   
 }
 
 .cardreview{
@@ -10,16 +10,16 @@
 }
 
 .card{
-      margin-left :4px;
+    
     margin-top: 30px;
     border-radius: 4px;
     color:  black;
 }
 
 .card-img-top{
-    width: 157px;
+    width: 15px;
     height: 200px;
-    padding-top: 6px;
+    
 }
 
 .card-text{

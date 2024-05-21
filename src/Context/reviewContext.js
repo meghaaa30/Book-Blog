@@ -35,7 +35,7 @@ export const ReviewProvider = (props) => {
     };
 
     return (
-        <ReviewContext.Provider value={{ reviews, addReview, getReview }}>
+        <ReviewContext.Provider value={{ reviews, addReview, getReview , setReviews}}>
             {props.children}
         </ReviewContext.Provider>
     );

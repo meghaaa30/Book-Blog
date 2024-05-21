@@ -8,7 +8,7 @@ import ReviewAdded from "./ReviewAdded";
 function Header() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter forceRefresh={true}>
       <div className="app-root-1">
         <header className="Paper-root AppBar-root AppBar-positionStatic AppBar-colorPrimary Paper-elevation4">
           <div className="Toolbar-root Toolbar-regular header-appBar-13 Toolbar-gutters">
@@ -29,17 +29,21 @@ function Header() {
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3">
               <NavLink to="/about">About Us</NavLink>
             </button>
+            {/* <button className="ButtonBase-root Button-root Button-text header-navButtons-3">
+              <NavLink to="/review">read Us</NavLink>
+            </button> */}
           </div>
         </header>
       </div>
       <Switch>
         <Route exact path="/">
+          {/* <img className="bottom-space" src={homeImage} alt="" /> */}
+          {/* <BookStrip />  */}
           <BookStrip />
         </Route>
-        <Route path="/add"><ReviewAdded /></Route>
-        <Route path="/discover"><Discover /></Route>
-        {/* // <Route path="/about"></Route> */}
-
+        <Route path="/add"><ReviewAdded></ReviewAdded></Route>
+        <Route path="/discover"><Discover></Discover></Route>
+       
       </Switch>
     </BrowserRouter>
   );

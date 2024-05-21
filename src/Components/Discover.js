@@ -3,9 +3,14 @@ import ReviewsAll from './ReviewsAll';
 
 function Discover() {
   return (
+    
     <div>
-      <ReviewsAll />
+    
+      <ReviewsAll></ReviewsAll>
+      
+  
     </div>
+   
   )
 }
 
