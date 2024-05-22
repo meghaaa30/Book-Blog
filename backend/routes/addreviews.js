@@ -8,30 +8,34 @@ const {body, validationResult} = require('express-validator')
 //     return reviews.title.length > 0 ? reviews[reviews.title.length - 1].id + 1 : 1;
 //   }
 
-router.get('/fetchreviews', fetch, async (req, res) =>{
+router.get('/fetchreviews', async (req, res) =>{
     
-    try{
-        const review= await reviews.find({user: req.user.id})
-        res.json(review)
-    }
-    catch(error){
-        res.status(400).send('error')
+    try {
+        const reviewed = await reviews.find().populate('user', 'firstName email'); 
+        res.json(reviewed);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
     }
 } )
 
 
+router.get('/fetchbookreviews', async (req, res) => {
+    try {
+        const { title } = req.query;
 
-// router.get('/readreview', fetch, async(req,res)=>{
-    
-//      try{
-        
-//         const users= await reviews.find({user: req.user.id}).select('review')
-//         res.json(users)
-//      }
-//      catch(error){
-//         res.status(400).send('error')
-//      }
-// })
+        if (!title) {
+            return res.status(400).send('Book title is required');
+        }
+
+        const bookReviews = await reviews.find({ title }).populate('user', 'firstName lastName email');
+
+        res.json(bookReviews);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Error fetching book reviews');
+    }
+});
+
 
 router.post('/addreview', fetch, [
     body('title', 'Enter a valid title').isLength({ min: 3 }),
@@ -44,8 +48,6 @@ router.post('/addreview', fetch, [
             if (!errors.isEmpty()) {
                 return res.status(500).json({ errors: errors.array() });
             }
-
-            //If there are errors, return Bad request and the errors
            
             const reviewed = new reviews({
                 title, author, review, user: req.user.id
