@@ -25,7 +25,6 @@ function SignIn() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY0MzNkMTMwZGQ1MmU5Njg1M2JiMmFhIn0sImlhdCI6MTcxNTY4Mzc0Nn0.zjoy95R9hvCPgga0e9wrEhQniCtMOXKAtY0nQcvH7QA'
             },
             body: JSON.stringify({ email: credentials.email, password: credentials.password })
         });
