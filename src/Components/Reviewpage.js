@@ -7,7 +7,7 @@ const Reviews = () => {
     const location = useLocation();
     const { title } = location.state;
     const Context = useContext(ReviewContext)
-    const {reviews, setReviews} = Context
+    const { reviews, setReviews } = Context
 
     useEffect(() => {
         const fetchReviews = async () => {
@@ -15,7 +15,7 @@ const Reviews = () => {
                 const response = await fetch(`${host}/api/addreviews/fetchbookreviews?title=${encodeURIComponent(title)}`, {
                     headers: {
                         'Content-Type': 'application/json',
-                       //'auth-token':`Bearer ${token}`
+                        //'auth-token':`Bearer ${token}`
                     }
                 });
                 const data = await response.json();
@@ -26,7 +26,7 @@ const Reviews = () => {
         };
 
         fetchReviews();
-    },  [title, setReviews]);
+    }, [title, setReviews]);
 
     return (
         <div className='read-reviews'>
@@ -34,7 +34,7 @@ const Reviews = () => {
             {reviews.length > 0 ? (
                 reviews.map((review) => (
                     <div key={review._id} className="review-card">
-                        
+
                         <p>{review.review}</p>
                         {review.user ? (
                             <p>{`Reviewed by: ${review.user.firstName} ${review.user.lastName}`}</p>
