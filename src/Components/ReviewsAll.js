@@ -10,7 +10,6 @@ function ReviewsAll() {
     getReview()
   }, [])
 
-
   return (
     <div>
       <div className="reviews">
