@@ -75,7 +75,7 @@ function SignUp() {
             console.log(json);
 
             if (json.success) {
-                localStorage.setItem('auth-token', json.token);
+                localStorage.setItem('auth-token', json.authtoken);
                 setAuth(true);
                 history.push('/');
             } else {
@@ -87,6 +87,7 @@ function SignUp() {
     };
 
     const responseGoogle = (response) => {
+        console.log(response);
         sendGoogleToken(response.tokenId);
     };
 
@@ -147,7 +148,7 @@ function SignUp() {
                                 onSuccess={responseGoogle}
                                 onFailure={responseGoogle}
                                 cookiePolicy={'single_host_origin'}
-                                isSignedIn={true}
+                                // isSignedIn={true}
                                 render={(renderProps) => (
                                     <MDBBtn
                                         type='submit'

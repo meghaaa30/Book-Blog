@@ -12,6 +12,7 @@ app.use(express.json())
 
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/addreviews', require('./routes/addreviews'))
+app.use('/api/books', require('./routes/books'))
 
 
 app.listen(port, () => {
