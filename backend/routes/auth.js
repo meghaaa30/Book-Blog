@@ -151,15 +151,15 @@ router.post('/googlelogin', async (req, res) => {
     }
 });
 
-router.post('/getUser', fetch, async (req, res) => {
-    try {
-        const userid = req.user.id;
-        const users = await User.findById(userid).select('-password');
-        res.json(users);
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send("Some error occurred");
-    }
-});
+// router.post('/getUser', fetch, async (req, res) => {
+//     try {
+//         const userid = req.user.id;
+//         const users = await User.findById(userid).select('-password');
+//         res.json(users);
+//     } catch (error) {
+//         console.log(error.message);
+//         res.status(500).send("Some error occurred");
+//     }
+// });
 
 module.exports = router;

@@ -13,54 +13,50 @@ export const ReviewProvider = (props) => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                //'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY0YTYyYzNlODgxZTM3M2VhYWI4ZTkzIn0sImlhdCI6MTcxNjE1NDkyM30.dLBZ6awAVVZK6XGJvIqfPvXE67HGeJssoGucNv5RUUo'
             }
         });
         const reviewed = await response.json();
-        console.log(reviewed);
         setReviews(reviewed);
     };
 
-   // Function to get token from localStorage
-const getToken = () => {
-    return localStorage.getItem('token');
-};
+    // Function to get token from localStorage
+    const getToken = () => {
+        return localStorage.getItem('token');
+    };
 
-
-
-// Function to add a review
-const addReview = async (title, author, review) => {
-    const token = getToken(); 
-    if(!token){
-        console.error('No token found');
-        // Handle the case where the token is not found (e.g., redirect to login page)
-        return;
-    }
-
-    try {
-        const response = await fetch(`${host}/api/addreviews/addreview`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'auth-token': `Bearer ${token}`
-            },
-            body: JSON.stringify({ title, author, review })
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to add review');
+    // Function to add a review
+    const addReview = async (title, author, review) => {
+        const token = getToken();
+        if (!token) {
+            console.error('No token found');
+            // Handle the case where the token is not found (e.g., redirect to login page)
+            return;
         }
 
-        const reviewed = await response.json();
-        setReviews(reviews.concat(reviewed));
-    } catch (error) {
-        console.error('Error adding review:', error);
-       
-    }
-};
-    
+        try {
+            const response = await fetch(`${host}/api/addreviews/addreview`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'auth-token': `Bearer ${token}`
+                },
+                body: JSON.stringify({ title, author, review })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add review');
+            }
+
+            const reviewed = await response.json();
+            setReviews(reviews.concat(reviewed));
+        } catch (error) {
+            console.error('Error adding review:', error);
+
+        }
+    };
+
     return (
-        <ReviewContext.Provider value={{ reviews, addReview, getReview , setReviews}}>
+        <ReviewContext.Provider value={{ reviews, addReview, getReview, setReviews }}>
             {props.children}
         </ReviewContext.Provider>
     );
