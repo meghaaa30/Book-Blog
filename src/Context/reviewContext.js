@@ -16,7 +16,12 @@ export const ReviewProvider = (props) => {
             }
         });
         const reviewed = await response.json();
-        setReviews(reviewed);
+        const lowercaseReviews = reviewed.map(review => ({
+            ...review,
+            title: review.title.toLowerCase(),
+            author: review.author.toLowerCase()
+        }));
+        setReviews(lowercaseReviews);
     };
 
     // Function to get token from localStorage
@@ -40,7 +45,7 @@ export const ReviewProvider = (props) => {
                     'Content-Type': 'application/json',
                     'auth-token': `Bearer ${token}`
                 },
-                body: JSON.stringify({ title, author, review })
+                body: JSON.stringify({ title: title.toLowerCase(), author: author.toLowerCase(), review })
             });
 
             if (!response.ok) {
@@ -48,6 +53,7 @@ export const ReviewProvider = (props) => {
             }
 
             const reviewed = await response.json();
+           
             setReviews(reviews.concat(reviewed));
         } catch (error) {
             console.error('Error adding review:', error);
