@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../assets/images/logo.jpg";
-import logo from "../assets/images/logo.jpg";
 import BookStrip from "./BookStrip";
 import { BrowserRouter, NavLink, Switch, Route } from "react-router-dom";
 import Discover from "./Discover";
@@ -14,7 +13,7 @@ function Header() {
         <header className="Paper-root AppBar-root AppBar-positionStatic AppBar-colorPrimary Paper-elevation4">
           <div className="Toolbar-root Toolbar-regular header-appBar-13 Toolbar-gutters">
             <div className="header-left-4"></div>
-            <NavLink to="/"><img className="header-logo-11" src={logo} alt="" /></NavLink>
+            <NavLink to="/"><img className="header-logo-11" src={logo} alt="logo" /></NavLink>
             <div className="header-vertical-9"></div>
             <NavLink to="/">
               <h5 className="Typography-root header-logo-text">Book-Blog</h5>
@@ -38,8 +37,6 @@ function Header() {
       </div>
       <Switch>
         <Route exact path="/">
-          {/* <img className="bottom-space" src={homeImage} alt="" /> */}
-          {/* <BookStrip />  */}
           <BookStrip />
         </Route>
         <Route path="/add"><ReviewAdded></ReviewAdded></Route>

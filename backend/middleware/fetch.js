@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = "megha is the bestest girlf";
+require('dotenv').config();
+const secret_key= process.env.REACT_APP_JWT_SECRET
 
 // Middleware to verify JWT token
 const fetch = (req, res, next) => {
@@ -11,7 +12,7 @@ const fetch = (req, res, next) => {
     }
 
     try {
-        const data = jwt.verify(token, JWT_SECRET);
+        const data = jwt.verify(token, secret_key);
         req.user = data.user;
         next();
     } catch (error) {

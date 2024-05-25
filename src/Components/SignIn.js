@@ -72,7 +72,7 @@ function SignIn() {
             console.log(json);
 
             if (json.success) {
-                localStorage.setItem('auth-token', json.token);
+                localStorage.setItem('auth-token', json.authtoken);
                 setAuth(true);
                 history.push('/');
             } else {
@@ -116,7 +116,7 @@ function SignIn() {
                                 onSuccess={responseGoogle}
                                 onFailure={responseGoogle}
                                 cookiePolicy={'single_host_origin'}
-                                isSignedIn={true}
+                                // isSignedIn={true}
                                 render={(renderProps) => (
                                     <MDBBtn
                                         type='submit'

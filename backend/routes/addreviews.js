@@ -8,10 +8,6 @@ const {body, validationResult} = require('express-validator')
 //     return reviews.title.length > 0 ? reviews[reviews.title.length - 1].id + 1 : 1;
 //   }
 
-// function generateBookId() {
-//     return reviews.title.length > 0 ? reviews[reviews.title.length - 1].id + 1 : 1;
-//   }
-
 router.get('/fetchreviews', async (req, res) =>{
     
     try {

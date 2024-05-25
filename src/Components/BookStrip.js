@@ -11,14 +11,14 @@ const BookStrip = () => {
     const [displayedBooks, setDisplayedBooks] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(-1);
     const [isHovered, setIsHovered] = useState(false);
-    var { isAuth } = useContext(AuthContext);
+    const { isAuth } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchData = async () => {
             const data = await fetchBooks();
             if (data) {
                 setAllBooks(data);
-                const initialBooks = data.slice(0, 9); // Initially display the first 8 books
+                const initialBooks = data.slice(0, 9); // Initially display the first 9 books
                 setDisplayedBooks(initialBooks);
                 setCurrentIndex(0);
             }
@@ -29,6 +29,8 @@ const BookStrip = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
+            if (allBooks.length === 0) return;
+
             let newBooks = [...displayedBooks];
             const randomIndex = Math.floor(Math.random() * newBooks.length);
             let randomBook = allBooks[Math.floor(Math.random() * allBooks.length)];
@@ -95,18 +97,20 @@ const BookStrip = () => {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
                     {displayedBooks.map((book, index) => (
-                        <div
-                            key={book.key}
-                            className="book"
-                            style={{
-                                opacity: index === currentIndex ? 0 : 1, // Fade out/in based on index
-                                transition: 'opacity 1s ease-in-out', // CSS transition for fading effect
-                            }}
-                        >
-                            <a href={`https://openlibrary.org${book.key}`} target="_blank" rel="noopener noreferrer">
-                                <img src={`https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`} alt={book.title} style={{ width: '130px', height: '180px' }} />
-                            </a>
-                        </div>
+                        book && book.coverUrl ? (
+                            <div
+                                key={index}
+                                className="book"
+                                style={{
+                                    opacity: index === currentIndex ? 0 : 1, // Fade out/in based on index
+                                    transition: 'opacity 1s ease-in-out', // CSS transition for fading effect
+                                }}
+                            >
+                                <a href={book.infoLink} target="_blank" rel="noopener noreferrer">
+                                    <img src={book.coverUrl} alt={book.title} style={{ width: '130px', height: '180px' }} />
+                                </a>
+                            </div>
+                        ) : (null)
                     ))}
                 </div>
             </div>
