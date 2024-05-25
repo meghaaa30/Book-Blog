@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./Header";
-import Footer from "./Footer";
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import { ReviewProvider } from "../Context/reviewContext";
@@ -20,7 +19,6 @@ function App() {
           <Route exact path="/sign-in" component={SignIn} />
           <Route exact path="/reviews" component={ReviewPage} />
 
-          <Footer />
         </ReviewProvider>
       </div>
     </BrowserRouter>

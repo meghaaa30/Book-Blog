@@ -1,11 +1,10 @@
 const connectTo = require('./db')
-const bodyParser = require('body-parser');
+
 const express = require('express')
 var cors = require('cors')
 const app = express()
 const port = 5000;
 
-app.use(bodyParser.json());
 
 app.use(cors())
 app.use(express.json())

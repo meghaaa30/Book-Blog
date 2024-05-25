@@ -1,6 +1,4 @@
-.reviews{
-    padding-top: 100px;   
-}
+
 
 .cardreview{
     float: left;
@@ -30,3 +28,21 @@
 .read-reviews{
     padding-top: 120px;
 }
+
+  
+  .search-bar {
+    
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    padding-top: 100px;
+    margin-right: 20px; 
+  }
+  
+  .search-bar input {
+    width: 200px;
+    background-color: #361a03;
+    color:  #F5F5DC;
+    padding: 10px;
+    font-size: 16px;
+  }
