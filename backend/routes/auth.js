@@ -111,7 +111,7 @@ router.post('/googlelogin', async (req, res) => {
             let user = await User.findOne({ email });
 
             if (user) {
-                const authtoken = jwt.sign({ _id: user._id }, JWT_SECRET, {
+                const authtoken = jwt.sign({ user: { id: user.id } }, JWT_SECRET, {
                     expiresIn: '7d',
                 });
                 return res.json({
@@ -128,7 +128,7 @@ router.post('/googlelogin', async (req, res) => {
                 });
 
                 const data = await user.save();
-                const authtoken = jwt.sign({ _id: data._id }, JWT_SECRET, {
+                const authtoken = jwt.sign({ user: { id: data.id } }, JWT_SECRET, {
                     expiresIn: '7d',
                 });
                 return res.json({
@@ -150,16 +150,5 @@ router.post('/googlelogin', async (req, res) => {
         });
     }
 });
-
-// router.post('/getUser', fetch, async (req, res) => {
-//     try {
-//         const userid = req.user.id;
-//         const users = await User.findById(userid).select('-password');
-//         res.json(users);
-//     } catch (error) {
-//         console.log(error.message);
-//         res.status(500).send("Some error occurred");
-//     }
-// });
 
 module.exports = router;

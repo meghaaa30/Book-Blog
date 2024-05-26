@@ -1,23 +1,18 @@
-const express=require('express');
-const router= express.Router();
+const express = require('express');
+const router = express.Router();
 const reviews = require('../models/Review');
-const fetch= require('../middleware/fetch')
-const {body, validationResult} = require('express-validator')
+const fetch = require('../middleware/fetch');
+const { body, validationResult } = require('express-validator');
 
-// function generateBookId() {
-//     return reviews.title.length > 0 ? reviews[reviews.title.length - 1].id + 1 : 1;
-//   }
+router.get('/fetchreviews', async (req, res) => {
 
-router.get('/fetchreviews', async (req, res) =>{
-    
     try {
-        const reviewed = await reviews.find().populate('user', 'firstName email'); 
+        const reviewed = await reviews.find().populate('user', 'firstName email');
         res.json(reviewed);
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
     }
-} )
-
+});
 
 router.get('/fetchbookreviews', async (req, res) => {
     try {
@@ -36,30 +31,32 @@ router.get('/fetchbookreviews', async (req, res) => {
     }
 });
 
-
 router.post('/addreview', fetch, [
     body('title', 'Enter a valid title').isLength({ min: 3 }),
-    ], async (req, res) => {
-        try {
+    body('author', 'Enter a valid author').isLength({ min: 3 }),
+    body('review', 'Enter a valid review').isLength({ min: 3 }),
+], async (req, res) => {
+    try {
+        const { title, author, review } = req.body;
 
-            const { title, author, review } = req.body;
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        };
 
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return res.status(500).json({ errors: errors.array() });
-            }
-           
-            const reviewed = new reviews({
-                title, author, review, user: req.user.id
-             })
-             const savedReview = await reviewed.save()
-             res.json(savedReview)
+        const newReview = new reviews({
+            title,
+            author,
+            review,
+            user: req.user.id,
+        });
 
-        } catch (error) {
-            console.error(error.message);
-            res.status(400).send("Internal Server Error");
-        }
-    })
+        const savedReview = await newReview.save();
+        res.json(savedReview);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
 module.exports = router;
-

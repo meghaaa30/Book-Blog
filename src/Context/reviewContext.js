@@ -24,9 +24,8 @@ export const ReviewProvider = (props) => {
         setReviews(lowercaseReviews);
     };
 
-    // Function to get token from localStorage
     const getToken = () => {
-        return localStorage.getItem('token');
+        return localStorage.getItem('auth-token');
     };
 
     // Function to add a review
@@ -34,7 +33,6 @@ export const ReviewProvider = (props) => {
         const token = getToken();
         if (!token) {
             console.error('No token found');
-            // Handle the case where the token is not found (e.g., redirect to login page)
             return;
         }
 
@@ -53,11 +51,9 @@ export const ReviewProvider = (props) => {
             }
 
             const reviewed = await response.json();
-           
             setReviews(reviews.concat(reviewed));
         } catch (error) {
             console.error('Error adding review:', error);
-
         }
     };
 

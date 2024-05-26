@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const secret_key= process.env.REACT_APP_JWT_SECRET
+const secret_key = process.env.REACT_APP_JWT_SECRET;
 
 // Middleware to verify JWT token
 const fetch = (req, res, next) => {
@@ -13,7 +13,9 @@ const fetch = (req, res, next) => {
 
     try {
         const data = jwt.verify(token, secret_key);
-        req.user = data.user;
+        const userId = data.user ? data.user : data._id;
+
+        req.user = userId;
         next();
     } catch (error) {
         return res.status(400).send({ error: "Please authenticate using a valid token" });
