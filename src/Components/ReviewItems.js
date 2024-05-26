@@ -1,22 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import fetchBooks from '../fetchBooks';
 
 const ReviewItems = ({ title, reviews }) => {
   const history = useHistory();
   const [matchingBook, setMatchingBook] = useState(null);
 
-  useEffect(() => {
-    const updateCachedBooks = async () => {
-      const books = await fetchBooks();
+  const updateCachedBooks = () => {
+    const cachedBooks = localStorage.getItem('cachedBooks');
+    if (cachedBooks) {
+      const books = JSON.parse(cachedBooks);
       const foundBook = books.find(book =>
         book.title.toLowerCase() === title.toLowerCase() &&
         book.authors.some(author => reviews.some(review => author.toLowerCase() === review.author.toLowerCase()))
       );
       setMatchingBook(foundBook);
+    }
+  };
+
+  useEffect(() => {
+    updateCachedBooks();
+
+    const handleReviewAdded = () => {
+      updateCachedBooks();
     };
 
-    updateCachedBooks();
+    window.addEventListener('reviewAdded', handleReviewAdded);
+
+    return () => {
+      window.removeEventListener('reviewAdded', handleReviewAdded);
+    };
   }, [title, reviews]);
 
   const handleClick = () => {

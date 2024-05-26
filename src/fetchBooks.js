@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Fetch the last update version from MongoDB backend
 const fetchBooksVersionFromMongoDB = async () => {
     try {
         const response = await axios.get('http://localhost:5000/api/books/version');
@@ -11,7 +10,6 @@ const fetchBooksVersionFromMongoDB = async () => {
     }
 };
 
-// Fetch titles and author names from MongoDB backend
 const fetchTitlesAndAuthorsFromMongoDB = async () => {
     try {
         const response = await axios.get('http://localhost:5000/api/books/titles');
@@ -22,7 +20,6 @@ const fetchTitlesAndAuthorsFromMongoDB = async () => {
     }
 };
 
-// Fetch books from Google Books API using the titles and author names
 const fetchBooksFromGoogleBooks = async (titlesAndAuthors) => {
     const promises = titlesAndAuthors.map(async ({ title, author }) => {
         const query = `${title} ${author}`;
@@ -57,7 +54,6 @@ const fetchBooksFromGoogleBooks = async (titlesAndAuthors) => {
     return books.filter(book => book !== null);
 };
 
-// Check local storage for cached data
 const getCachedBooks = () => {
     const cachedBooks = localStorage.getItem('cachedBooks');
     const cachedVersion = localStorage.getItem('cachedBooksVersion');
@@ -70,13 +66,11 @@ const getCachedBooks = () => {
     return null;
 };
 
-// Save data to local storage
 const cacheBooks = (books, version) => {
     localStorage.setItem('cachedBooks', JSON.stringify(books));
     localStorage.setItem('cachedBooksVersion', version.toString());
 };
 
-// Main fetchBooks function
 const fetchBooks = async () => {
     const cachedData = getCachedBooks();
     const currentVersion = await fetchBooksVersionFromMongoDB();
@@ -94,5 +88,11 @@ const fetchBooks = async () => {
     cacheBooks(books, currentVersion);
     return books;
 };
+
+const updateBooksOnReview = async () => {
+    await fetchBooks();
+};
+
+window.addEventListener('reviewAdded', updateBooksOnReview);
 
 export default fetchBooks;

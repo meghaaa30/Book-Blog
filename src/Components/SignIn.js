@@ -46,7 +46,7 @@ function SignIn() {
         const json = await response.json();
         console.log(json);
         if (json.success) {
-            localStorage.setItem('token', json.authtoken);
+            localStorage.setItem('auth-token', json.authtoken);
             setAuth(true);
             history.push("/");
         } else {
@@ -64,6 +64,7 @@ function SignIn() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'auth-token': `Bearer ${tokenId}`,
                 },
                 body: JSON.stringify({ idToken: tokenId }),
             });
