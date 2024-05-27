@@ -1,14 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-    MDBBtn,
-    MDBContainer,
-    MDBRow,
-    MDBCol,
-    MDBCard,
-    MDBCardBody,
-    MDBInput,
-} from 'mdb-react-ui-kit';
+import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput } from 'mdb-react-ui-kit';
 import GoogleIcon from '@mui/icons-material/Google';
 import { AuthContext } from '../Context/AuthContext';
 import { GoogleLogin } from 'react-google-login';
@@ -24,7 +16,7 @@ function SignUp() {
         password: "",
     });
     let history = useHistory();
-    const { isAuth, setAuth } = useContext(AuthContext);
+    const { setIsAuth } = useContext(AuthContext);
 
     useEffect(() => {
         function start() {
@@ -50,7 +42,7 @@ function SignUp() {
         console.log(json);
         if (json.success) {
             localStorage.setItem('auth-token', json.authtoken);
-            setAuth(true);
+            setIsAuth(true);
             history.push("/");
         } else {
             alert("Invalid Credentials")
@@ -77,7 +69,7 @@ function SignUp() {
 
             if (json.success) {
                 localStorage.setItem('auth-token', json.authtoken);
-                setAuth(true);
+                setIsAuth(true);
                 history.push('/');
             } else {
                 alert('Google Sign-Up failed');
@@ -160,6 +152,8 @@ function SignUp() {
                                         disabled={renderProps.disabled}
                                     >
                                         <GoogleIcon style={{ color: '#F5F5DC' }} /> Sign up with Google
+                                    
+
                                     </MDBBtn>
                                 )}
                             />

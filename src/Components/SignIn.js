@@ -21,7 +21,7 @@ function SignIn() {
 
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     let history = useHistory();
-    const { isAuth, setAuth } = useContext(AuthContext);
+    const { setIsAuth } = useContext(AuthContext);
 
     useEffect(() => {
         function start() {
@@ -47,7 +47,7 @@ function SignIn() {
         console.log(json);
         if (json.success) {
             localStorage.setItem('auth-token', json.authtoken);
-            setAuth(true);
+            setIsAuth(true);
             history.push("/");
         } else {
             alert("Invalid Credentials")
@@ -74,7 +74,7 @@ function SignIn() {
 
             if (json.success) {
                 localStorage.setItem('auth-token', json.authtoken);
-                setAuth(true);
+                setIsAuth(true);
                 history.push('/');
             } else {
                 alert('Google Sign-Up failed');

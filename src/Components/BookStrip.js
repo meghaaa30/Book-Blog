@@ -11,7 +11,12 @@ const BookStrip = () => {
     const [displayedBooks, setDisplayedBooks] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(-1);
     const [isHovered, setIsHovered] = useState(false);
-    const { isAuth } = useContext(AuthContext);
+    const { isAuth, setIsAuth } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        localStorage.removeItem('auth-token');
+        setIsAuth(false);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -92,7 +97,7 @@ const BookStrip = () => {
                                     <Link to="/sign-in">Sign In</Link>
                                 </MDBBtn>
                             </div>
-                        ) : null}
+                        ) :  <MDBBtn size='lg' style={{ backgroundColor: '#361a03', color: '#F5F5DC' }} onClick={handleLogout}>Logout</MDBBtn>}
                     </div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
