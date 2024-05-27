@@ -3,6 +3,7 @@ import Header from "./Header";
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import { ReviewProvider } from "../Context/reviewContext";
+import { AuthProvider } from "../Context/AuthContext";
 import { BrowserRouter, Route } from "react-router-dom";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import ReviewPage from "./Reviewpage";
@@ -13,12 +14,13 @@ function App() {
     <BrowserRouter forceRefresh={true}>
       <div className="App">
         <ReviewProvider>
+          <AuthProvider>
           <Header />
 
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/sign-in" component={SignIn} />
           <Route exact path="/reviews" component={ReviewPage} />
-
+          </AuthProvider>
         </ReviewProvider>
       </div>
     </BrowserRouter>

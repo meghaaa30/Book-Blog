@@ -1,16 +1,19 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-export const AuthContext = createContext({ isAuth: false, token: "", setAuth: () => { } })
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [isAuth, setAuth] = useState(localStorage.getItem("isAuth") || false)
-    const [token, setToken] = useState(localStorage.getItem("token"))
+    const [isAuth, setIsAuth] = useState(false);
+
+    // Load the authentication state from local storage on mount
     useEffect(() => {
-        localStorage.setItem("isAuth", isAuth)
-    }, [isAuth])
+        const authStatus = localStorage.getItem('auth-token') ? true : false;
+        setIsAuth(authStatus);
+    }, []);
+
     return (
-        <AuthContext.Provider value={{ isAuth, token, setAuth }}>
+        <AuthContext.Provider value={{ isAuth, setIsAuth }}>
             {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};
