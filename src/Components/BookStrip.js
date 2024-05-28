@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import fetchBooks from '../fetchBooks';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Link, Route, Switch, useHistory } from "react-router-dom";
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { AuthContext } from '../Context/AuthContext';
 
@@ -11,12 +11,8 @@ const BookStrip = () => {
     const [displayedBooks, setDisplayedBooks] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(-1);
     const [isHovered, setIsHovered] = useState(false);
-    const { isAuth, setIsAuth } = useContext(AuthContext);
-
-    const handleLogout = () => {
-        localStorage.removeItem('auth-token');
-        setIsAuth(false);
-    };
+    const { isAuth } = useContext(AuthContext);
+    const history = useHistory();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -45,7 +41,7 @@ const BookStrip = () => {
             newBooks[randomIndex] = randomBook;
             setDisplayedBooks(newBooks);
             setCurrentIndex(randomIndex);
-        }, 2000); // Change every 2 seconds
+        }, 3000);
 
         return () => clearInterval(interval);
     }, [allBooks, displayedBooks]);
@@ -56,6 +52,14 @@ const BookStrip = () => {
 
     const handleMouseLeave = () => {
         setIsHovered(false);
+    };
+
+    const handleClick = (title) => {
+        history.push({
+            pathname: "/reviews",
+            search: `?title=${encodeURIComponent(title.toLowerCase())}`,
+            state: { title: title.toLowerCase() }
+        });
     };
 
     return (
@@ -97,7 +101,7 @@ const BookStrip = () => {
                                     <Link to="/sign-in">Sign In</Link>
                                 </MDBBtn>
                             </div>
-                        ) :  <MDBBtn size='lg' style={{ backgroundColor: '#361a03', color: '#F5F5DC' }} onClick={handleLogout}>Logout</MDBBtn>}
+                        ) : null}
                     </div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
@@ -111,9 +115,12 @@ const BookStrip = () => {
                                     transition: 'opacity 1s ease-in-out', // CSS transition for fading effect
                                 }}
                             >
-                                <a href={book.infoLink} target="_blank" rel="noopener noreferrer">
-                                    <img src={book.coverUrl} alt={book.title} style={{ width: '130px', height: '180px' }} />
-                                </a>
+                                <img
+                                    src={book.coverUrl}
+                                    alt={book.title}
+                                    style={{ width: '130px', height: '180px', cursor: 'pointer' }}
+                                    onClick={() => handleClick(book.title)} // Add onClick event to the image
+                                />
                             </div>
                         ) : (null)
                     ))}

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation, NavLink } from 'react-router-dom';
 import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput } from 'mdb-react-ui-kit';
 import GoogleIcon from '@mui/icons-material/Google';
 import { AuthContext } from '../Context/AuthContext';
@@ -16,7 +16,9 @@ function SignUp() {
         password: "",
     });
     let history = useHistory();
+    let location = useLocation();
     const { setIsAuth } = useContext(AuthContext);
+    const { from } = location.state || { from: { pathname: "/" } };
 
     useEffect(() => {
         function start() {
@@ -43,7 +45,7 @@ function SignUp() {
         if (json.success) {
             localStorage.setItem('auth-token', json.authtoken);
             setIsAuth(true);
-            history.push("/");
+            history.replace(from);
         } else {
             alert("Invalid Credentials")
         }
@@ -70,7 +72,7 @@ function SignUp() {
             if (json.success) {
                 localStorage.setItem('auth-token', json.authtoken);
                 setIsAuth(true);
-                history.push('/');
+                history.replace(from);
             } else {
                 alert('Google Sign-Up failed');
             }
@@ -80,7 +82,6 @@ function SignUp() {
     };
 
     const responseGoogle = (response) => {
-        console.log(response);
         sendGoogleToken(response.tokenId);
     };
 
@@ -135,13 +136,13 @@ function SignUp() {
                                     Sign Up
                                 </MDBBtn>
                             </form>
+                            <p className="mb-0" style={{ color: '#361a03' }}>Already have an account? <NavLink to={{ pathname: "/sign-in", state: { from: location.state?.from || "/" } }} className='fw-bold mb-2 sign-up-link'>Sign In</NavLink></p>
                             <hr className="my-4" style={{ color: '#361a03' }} />
                             <GoogleLogin
                                 clientId={clientId}
                                 onSuccess={responseGoogle}
                                 onFailure={responseGoogle}
                                 cookiePolicy={'single_host_origin'}
-                                // isSignedIn={true}
                                 render={(renderProps) => (
                                     <MDBBtn
                                         type='submit'
@@ -152,8 +153,6 @@ function SignUp() {
                                         disabled={renderProps.disabled}
                                     >
                                         <GoogleIcon style={{ color: '#F5F5DC' }} /> Sign up with Google
-                                    
-
                                     </MDBBtn>
                                 )}
                             />

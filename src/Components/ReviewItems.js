@@ -34,7 +34,8 @@ const ReviewItems = ({ title, reviews }) => {
   const handleClick = () => {
     history.push({
       pathname: "/reviews",
-      state: { title }
+      search: `?title=${encodeURIComponent(title.toLowerCase())}`,
+      state: { title: title.toLowerCase() }
     });
   };
 
