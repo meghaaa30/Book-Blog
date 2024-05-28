@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ReviewContext } from '../Context/reviewContext';
 
@@ -30,7 +30,7 @@ const Reviews = () => {
 
     return (
         <div className='read-reviews'>
-            <h1>Reviews for {title}</h1>
+            <h1>Reviews for {title.toUpperCase()}</h1>
             {reviews.length > 0 ? (
                 reviews.map((review) => (
                     <div key={review._id} className="review-card">
