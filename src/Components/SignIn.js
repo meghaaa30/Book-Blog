@@ -39,13 +39,12 @@ function SignIn() {
             body: JSON.stringify(credentials)
         });
         const json = await response.json();
-        console.log(json);
         if (json.success) {
             localStorage.setItem('auth-token', json.authtoken);
             setIsAuth(true);
             history.replace(from);
         } else {
-            alert("Invalid Credentials")
+            alert("Invalid Credentials");
         }
     };
 
@@ -65,8 +64,6 @@ function SignIn() {
             });
 
             const json = await response.json();
-            console.log(json);
-
             if (json.success) {
                 localStorage.setItem('auth-token', json.authtoken);
                 setIsAuth(true);
