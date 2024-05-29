@@ -4,15 +4,18 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isAuth, setIsAuth] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
-    // Load the authentication state from local storage on mount
     useEffect(() => {
-        const authStatus = localStorage.getItem('auth-token') ? true : false;
-        setIsAuth(authStatus);
+        const authToken = localStorage.getItem('auth-token');
+        if (authToken) {
+            setIsAuth(true);
+        }
+        setIsLoading(false);
     }, []);
 
     return (
-        <AuthContext.Provider value={{ isAuth, setIsAuth }}>
+        <AuthContext.Provider value={{ isAuth, setIsAuth, isLoading }}>
             {children}
         </AuthContext.Provider>
     );

@@ -1,6 +1,4 @@
-// App.js
-
-import React from "react";
+import React, { useContext } from "react";
 import Header from "./Header";
 import SignUp from './SignUp';
 import SignIn from './SignIn';
@@ -17,10 +15,10 @@ import '../styles/Signout.css';
 
 function App() {
   return (
-    <BrowserRouter >
-      <div className="App">
+    <BrowserRouter>
+      <AuthProvider>
         <ReviewProvider>
-          <AuthProvider>
+          <div className="App">
             <Header />
             <Switch>
               <Route exact path="/" component={BookStrip} />
@@ -28,19 +26,33 @@ function App() {
               <Route exact path="/sign-in" component={SignIn} />
               <Route path="/discover" component={Discover} />
               <Route exact path="/reviews" component={Reviews} />
-              <Route path="/add" render={() => (
-                <AuthContext.Consumer>
-                  {({ isAuth }) => (
-                    isAuth ? <ReviewAdded /> : <Redirect to={{ pathname: "/sign-in", state: { from: "/add" } }} />
-                  )}
-                </AuthContext.Consumer>
-              )} />
-             
+              <ProtectedRoute path="/add" component={ReviewAdded} />
             </Switch>
-          </AuthProvider>
+          </div>
         </ReviewProvider>
-      </div>
+      </AuthProvider>
     </BrowserRouter>
+  );
+}
+
+function ProtectedRoute({ component: Component, ...rest }) {
+  const { isAuth, isLoading } = useContext(AuthContext);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuth ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/sign-in", state: { from: props.location } }} />
+        )
+      }
+    />
   );
 }
 

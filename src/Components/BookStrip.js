@@ -119,7 +119,7 @@ const BookStrip = () => {
                                     src={book.coverUrl}
                                     alt={book.title}
                                     style={{ width: '130px', height: '180px', cursor: 'pointer' }}
-                                    onClick={() => handleClick(book.title)} // Add onClick event to the image
+                                    onClick={() => handleClick(book.title)}
                                 />
                             </div>
                         ) : (null)
