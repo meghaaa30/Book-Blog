@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import fetchBooks from '../fetchBooks';
+import fetchBooks from '../helpers/fetchBooks';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import { BrowserRouter, Link, Route, Switch, useHistory } from "react-router-dom";
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { AuthContext } from '../Context/AuthContext';
 
-const BookStrip = () => {
+function BookStrip() {
     const [allBooks, setAllBooks] = useState([]);
     const [displayedBooks, setDisplayedBooks] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(-1);

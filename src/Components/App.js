@@ -10,8 +10,10 @@ import Reviews from "./Reviewpage";
 import ReviewAdded from "./ReviewAdded";
 import Discover from "./Discover";
 import BookStrip from "./BookStrip";
+import About from "./About";
 import '../styles/Reviewitems.css';
 import '../styles/Signout.css';
+import '../styles/About.css';
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
               <Route path="/discover" component={Discover} />
               <Route exact path="/reviews" component={Reviews} />
               <ProtectedRoute path="/add" component={ReviewAdded} />
+              <Route path="/about" component={About} />
             </Switch>
           </div>
         </ReviewProvider>
