@@ -9,6 +9,7 @@ import { gapi } from 'gapi-script';
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function SignUp() {
+    const [message, setMessage] = useState('');
     const [credentials, setCredentials] = useState({
         firstName: "",
         lastName: "",
@@ -27,27 +28,30 @@ function SignUp() {
                 scope: 'email',
             });
         }
-
         gapi.load('client:auth2', start);
     }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/auth/sign-up", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(credentials)
-        });
-        const json = await response.json();
-        console.log(json);
-        if (json.success) {
-            localStorage.setItem('auth-token', json.authtoken);
-            setIsAuth(true);
-            history.replace(from);
-        } else {
-            alert("Invalid Credentials")
+        try {
+            const response = await fetch("http://localhost:5000/api/auth/sign-up", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(credentials)
+            });
+            const json = await response.json();
+            if (json.success) {
+                localStorage.setItem('auth-token', json.authtoken);
+                setIsAuth(true);
+                history.replace(from);
+            } else {
+                setMessage('You are already signed up. Please log in.');
+            }
+        } catch (error) {
+            setMessage('An error occurred during sign up. Please try again later.');
+            console.error('Sign up error:', error);
         }
     };
 
@@ -61,23 +65,20 @@ function SignUp() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'auth-token': `Bearer ${tokenId}`,
                 },
                 body: JSON.stringify({ idToken: tokenId }),
             });
-
             const json = await response.json();
-            console.log(json);
-
             if (json.success) {
                 localStorage.setItem('auth-token', json.authtoken);
                 setIsAuth(true);
                 history.replace(from);
             } else {
-                alert('Google Sign-Up failed');
+                setMessage('Google login failed. Please try again.');
             }
         } catch (error) {
-            console.log('GOOGLE SIGNUP ERROR', error);
+            setMessage('An error occurred during Google login. Please try again later.');
+            console.error('Google login error:', error);
         }
     };
 
@@ -131,11 +132,11 @@ function SignUp() {
                                     onChange={onChange}
                                     required
                                     minLength={8} />
-
-                                <MDBBtn type='submit' className="mb-2 w-100" size='lg' style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }} >
+                                <MDBBtn type='submit' className="mb-2 w-100" size='lg' style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }}>
                                     Sign Up
                                 </MDBBtn>
                             </form>
+                            {message && <p className="mt-3 text-center" style={{ color: '#361a03' }}>{message}</p>}
                             <p className="mb-0" style={{ color: '#361a03' }}>Already have an account? <NavLink to={{ pathname: "/sign-in", state: { from: location.state?.from || "/" } }} className='fw-bold mb-2 sign-up-link'>Sign In</NavLink></p>
                             <hr className="my-4" style={{ color: '#361a03' }} />
                             <GoogleLogin
@@ -145,7 +146,7 @@ function SignUp() {
                                 cookiePolicy={'single_host_origin'}
                                 render={(renderProps) => (
                                     <MDBBtn
-                                        type='submit'
+                                        type='button'
                                         className="mb-2 w-100"
                                         size="lg"
                                         style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }}
