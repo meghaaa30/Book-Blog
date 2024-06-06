@@ -5,11 +5,14 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { AuthContext } from '../Context/AuthContext';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
+import { Alert } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function SignUp() {
     const [message, setMessage] = useState('');
+    const [alertVariant, setAlertVariant] = useState('danger');
     const [credentials, setCredentials] = useState({
         firstName: "",
         lastName: "",
@@ -47,9 +50,11 @@ function SignUp() {
                 setIsAuth(true);
                 history.replace(from);
             } else {
+                setAlertVariant('danger');
                 setMessage('You are already signed up. Please log in.');
             }
         } catch (error) {
+            setAlertVariant('danger');
             setMessage('An error occurred during sign up. Please try again later.');
             console.error('Sign up error:', error);
         }
@@ -74,9 +79,11 @@ function SignUp() {
                 setIsAuth(true);
                 history.replace(from);
             } else {
+                setAlertVariant('danger');
                 setMessage('Google login failed. Please try again.');
             }
         } catch (error) {
+            setAlertVariant('danger');
             setMessage('An error occurred during Google login. Please try again later.');
             console.error('Google login error:', error);
         }
@@ -136,7 +143,7 @@ function SignUp() {
                                     Sign Up
                                 </MDBBtn>
                             </form>
-                            {message && <p className="mt-3 text-center" style={{ color: '#361a03' }}>{message}</p>}
+                            {message && <Alert variant={alertVariant} className='mt-3'>{message}</Alert>}
                             <p className="mb-0" style={{ color: '#361a03' }}>Already have an account? <NavLink to={{ pathname: "/sign-in", state: { from: location.state?.from || "/" } }} className='fw-bold mb-2 sign-up-link'>Sign In</NavLink></p>
                             <hr className="my-4" style={{ color: '#361a03' }} />
                             <GoogleLogin
