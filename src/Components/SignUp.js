@@ -45,13 +45,28 @@ function SignUp() {
                 body: JSON.stringify(credentials)
             });
             const json = await response.json();
-            if (json.success) {
+            if (response.ok) {
                 localStorage.setItem('auth-token', json.authtoken);
                 setIsAuth(true);
-                history.replace(from);
+                setMessage('Sign up successful!');
+                setAlertVariant('success');
+                setCredentials({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    password: "",
+                });
+                setTimeout(() => {
+                    setMessage('');
+                    history.replace(from);
+                }, 1000);
             } else {
                 setAlertVariant('danger');
-                setMessage('You are already signed up. Please log in.');
+                if (json.error) {
+                    setMessage(json.error);
+                } else {
+                    setMessage('Sign up failed. Please try again.');
+                }
             }
         } catch (error) {
             setAlertVariant('danger');
@@ -61,6 +76,7 @@ function SignUp() {
     };
 
     const onChange = (e) => {
+        setMessage('');
         setCredentials({ ...credentials, [e.target.id]: e.target.value });
     };
 
@@ -74,13 +90,22 @@ function SignUp() {
                 body: JSON.stringify({ idToken: tokenId }),
             });
             const json = await response.json();
-            if (json.success) {
+            if (response.ok) {
                 localStorage.setItem('auth-token', json.authtoken);
                 setIsAuth(true);
-                history.replace(from);
+                setMessage('Google login successful!');
+                setAlertVariant('success');
+                setTimeout(() => {
+                    setMessage('');
+                    history.replace(from);
+                }, 1000);
             } else {
                 setAlertVariant('danger');
-                setMessage('Google login failed. Please try again.');
+                if (json.error) {
+                    setMessage(json.error);
+                } else {
+                    setMessage('Google login failed. Please try again.');
+                }
             }
         } catch (error) {
             setAlertVariant('danger');
@@ -100,6 +125,7 @@ function SignUp() {
                     <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '500px', backgroundColor: '#F5F5DC' }}>
                         <MDBCardBody className='p-5 w-100 d-flex flex-column'>
                             <h2 className="fw-bold mb-2 text-center" style={{ color: '#361a03' }}>Sign Up</h2>
+                            {message && <Alert variant={alertVariant} className='mt-3'>{message}</Alert>}
                             <form onSubmit={handleSubmit} method="POST" action="/sign-up">
                                 <MDBInput
                                     wrapperClass='mb-4 w-100'
@@ -143,7 +169,6 @@ function SignUp() {
                                     Sign Up
                                 </MDBBtn>
                             </form>
-                            {message && <Alert variant={alertVariant} className='mt-3'>{message}</Alert>}
                             <p className="mb-0" style={{ color: '#361a03' }}>Already have an account? <NavLink to={{ pathname: "/sign-in", state: { from: location.state?.from || "/" } }} className='fw-bold mb-2 sign-up-link'>Sign In</NavLink></p>
                             <hr className="my-4" style={{ color: '#361a03' }} />
                             <GoogleLogin

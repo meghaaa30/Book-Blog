@@ -51,7 +51,9 @@ function SignIn() {
                 history.replace(from);
             } else {
                 setAlertVariant('danger');
-                setMessage('Email does not exist. Please sign up.');
+                if (json.error) {
+                    setMessage(json.error);
+                }
             }
         } catch (error) {
             setAlertVariant('danger');
@@ -63,6 +65,7 @@ function SignIn() {
 
     const onChange = (e) => {
         setCredentials({ ...credentials, [e.target.id]: e.target.value });
+        setMessage('');
     };
 
     const sendGoogleToken = async (tokenId) => {
