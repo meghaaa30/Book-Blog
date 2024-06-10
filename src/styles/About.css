@@ -110,3 +110,38 @@
     font-size: 1.2em;
     line-height: 1.5;
 }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+.about-us .about-image-container,
+.about-us .quote,
+.about-us .info,
+.about-us .testimonial {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+  
+.about-us .about-image-container {
+    animation-delay: 0s;
+}
+  
+.about-us .quote {
+    animation-delay: 0.5s;
+}
+  
+.about-us .info {
+    animation-delay: 1s;
+}
+  
+.about-us .testimonial {
+    animation-delay: 1.5s;
+}
