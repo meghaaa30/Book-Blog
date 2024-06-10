@@ -9,16 +9,16 @@ function ReviewsAll() {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-      getReview()
+    getReview()
   }, []);
 
   const filteredReviews = reviews.filter((review) => {
     const query = searchQuery.trim().toLowerCase();
-    const regex = new RegExp(`\\b${query}\\w*\\b`, 'i'); 
+    const regex = new RegExp(`\\b${query}\\w*\\b`, 'i');
     return regex.test(review.title.toLowerCase());
-});
+  });
 
-  
+
 
 
   const groupedReviews = filteredReviews.reduce((acc, review) => {
@@ -39,12 +39,12 @@ function ReviewsAll() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-  
+
         </div>
         <div className="reviews">
-          <h1>Your Reviews</h1>
+          <h1>All Reviews</h1>
           {Object.keys(groupedReviews).length === 0 ? (
-            <div>No reviews available for this Book.</div>
+            <div>No reviews available.</div>
           ) : (
             Object.keys(groupedReviews).map((title) => (
               <ReviewItems key={title} title={title} reviews={groupedReviews[title]} />

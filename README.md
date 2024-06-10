@@ -1,70 +1,138 @@
-# Getting Started with Create React App
+# Book-Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_Book-Blog is crafted with a vision to create a vibrant community where book enthusiasts can connect, share, and explore diverse literary perspectives. At Book-Blog, we aim to provide an intuitive user interface that empowers users to effortlessly read and post reviews, fostering a space where readers of all backgrounds can engage and enrich their reading experiences. Whether you're a casual reader or a passionate bibliophile, Book-Blog is your go-to platform for discovering new books and sharing your literary insights._
 
-## Available Scripts
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-In the project directory, you can run:
+## About The Project
 
-### `npm start`
+[![product](https://postimage.me/images/2024/06/10/product.png)](https://postimage.me/image/product.dgzOY)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+We provide an online portal where book enthusiasts can immerse themselves in a rich community of literary reviews. Readers can effortlessly search for reviews on their favorite books and explore a diverse array of opinions. Users can also contribute their own reviews, sharing their unique perspectives with others. Whether you're looking to discover new reads or share your thoughts on the latest bestseller, our platform offers a seamless and engaging experience for all.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Built With
 
-### `npm test`
+### Frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [ReactJs](https://reactjs.org/docs/getting-started.html)
+- [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
+- [React Bootstrap with Material Design](https://mdbootstrap.com/docs/react/)
+- [HTML](https://www.w3schools.com/TAGS/default.ASP)
+- [CSS](https://devdocs.io/css/)
 
-### `npm run build`
+### Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [NodeJs](https://nodejs.org/en/docs/)
+- [MongoDB](https://docs.mongodb.com/)
+- [Express](http://expressjs.com/en/api.html)
+- [Mongoose](https://mongoosejs.com/docs/api.html)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### IDE: [Visual Studio Code](https://code.visualstudio.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- NodeJs: v.14.15.1 or above
+- Express-jwt: v.6.0.0 or above
+- Mongoose: v.5.11.3 or above
+- React: v.17.0.1 or above
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+   git clone https://github.com/taniishkaaa/Book-Blog.git
+```
 
-## Learn More
+2. Install NPM packages :
+   Backend:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+cd backend
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+cd src
+npm install
+```
 
-### Code Splitting
+3. Enter your API keys in `.env`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+API_KEY = 'ENTER YOUR API';
+```
 
-### Analyzing the Bundle Size
+4. Run Server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Backend Server:
 
-### Making a Progressive Web App
+```sh
+cd backend
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```sh
+npm start
+```
 
-### Advanced Configuration
+or
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```sh
+nodemon index.js
+```
 
-### Deployment
+Frontend Server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```sh
+cd src
+npm start
+```
 
-### `npm run build` fails to minify
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 1. Read Reviews:
+
+##### Discover Reviews Without the Hassle
+
+_At our platform, reading reviews is simple and accessible to all. You don't need to register or login to dive into a wealth of literary insights. Simply search for the title you're interested in, and you'll find a collection of reviews from our community of readers. Whether you're looking for a new book to dive into or exploring opinions on a recent release, our platform offers a seamless reading experience without the need for a login._
+[![discover](https://postimage.me/images/2024/06/10/discover.png)](https://postimage.me/image/discover.dgoEE)
+
+#### 2. Add Reviews:
+
+##### Share Your Literary Insights with Us
+
+_To add your reviews to our platform, simply create an account and log in. Once logged in, you can easily share your thoughts on books by posting your reviews. Your contributions will help other readers discover new books and perspectives._
+[![add](https://postimage.me/images/2024/06/10/add.png)](https://postimage.me/image/add.dgV0a)
+
+## Contact
+
+- Mail us at: bookblog@gmail.com
+
+- Megha -
+  Email: meghasharma4982@gmail.com
+  Linkedin:
+
+- Tanishka -
+  Email: tanishkasingh2004@gmail.com
+  Linkedin: https://www.linkedin.com/in/tanishka-singh-a42571228/
