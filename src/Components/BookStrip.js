@@ -32,6 +32,8 @@ function BookStrip() {
         const interval = setInterval(() => {
             if (allBooks.length === 0) return;
 
+            if (allBooks.length === 0) return;
+
             let newBooks = [...displayedBooks];
             const randomIndex = Math.floor(Math.random() * newBooks.length);
             let randomBook = allBooks[Math.floor(Math.random() * allBooks.length)];

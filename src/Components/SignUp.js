@@ -5,7 +5,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { AuthContext } from '../Context/AuthContext';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
-import { Alert } from 'react-bootstrap';
+import { Alert, Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -13,6 +13,7 @@ const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 function SignUp() {
     const [message, setMessage] = useState('');
     const [alertVariant, setAlertVariant] = useState('danger');
+    const [loading, setLoading] = useState(false);
     const [credentials, setCredentials] = useState({
         firstName: "",
         lastName: "",
@@ -36,6 +37,7 @@ function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             const response = await fetch("http://localhost:5000/api/auth/sign-up", {
                 method: 'POST',
@@ -62,16 +64,14 @@ function SignUp() {
                 }, 1000);
             } else {
                 setAlertVariant('danger');
-                if (json.error) {
-                    setMessage(json.error);
-                } else {
-                    setMessage('Sign up failed. Please try again.');
-                }
+                setMessage(json.error || 'Sign up failed. Please try again.');
             }
         } catch (error) {
             setAlertVariant('danger');
             setMessage('An error occurred during sign up. Please try again later.');
             console.error('Sign up error:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -81,6 +81,7 @@ function SignUp() {
     };
 
     const sendGoogleToken = async (tokenId) => {
+        setLoading(true);
         try {
             const response = await fetch('http://localhost:5000/api/auth/googlelogin', {
                 method: 'POST',
@@ -101,16 +102,14 @@ function SignUp() {
                 }, 1000);
             } else {
                 setAlertVariant('danger');
-                if (json.error) {
-                    setMessage(json.error);
-                } else {
-                    setMessage('Google login failed. Please try again.');
-                }
+                setMessage(json.error || 'Google login failed. Please try again.');
             }
         } catch (error) {
             setAlertVariant('danger');
             setMessage('An error occurred during Google login. Please try again later.');
             console.error('Google login error:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -126,7 +125,7 @@ function SignUp() {
                         <MDBCardBody className='p-5 w-100 d-flex flex-column'>
                             <h2 className="fw-bold mb-2 text-center" style={{ color: '#361a03' }}>Sign Up</h2>
                             {message && <Alert variant={alertVariant} className='mt-3'>{message}</Alert>}
-                            <form onSubmit={handleSubmit} method="POST" action="/sign-up">
+                            <form onSubmit={handleSubmit}>
                                 <MDBInput
                                     wrapperClass='mb-4 w-100'
                                     label='First Name'
@@ -165,8 +164,8 @@ function SignUp() {
                                     onChange={onChange}
                                     required
                                     minLength={8} />
-                                <MDBBtn type='submit' className="mb-2 w-100" size='lg' style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }}>
-                                    Sign Up
+                                <MDBBtn type='submit' className="mb-2 w-100" size='lg' style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }} disabled={loading}>
+                                    {loading ? <Spinner animation="border" size="sm" /> : 'Sign Up'}
                                 </MDBBtn>
                             </form>
                             <p className="mb-0" style={{ color: '#361a03' }}>Already have an account? <NavLink to={{ pathname: "/sign-in", state: { from: location.state?.from || "/" } }} className='fw-bold mb-2 sign-up-link'>Sign In</NavLink></p>
@@ -183,9 +182,9 @@ function SignUp() {
                                         size="lg"
                                         style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }}
                                         onClick={renderProps.onClick}
-                                        disabled={renderProps.disabled}
+                                        disabled={renderProps.disabled || loading}
                                     >
-                                        <GoogleIcon style={{ color: '#F5F5DC' }} /> Sign up with Google
+                                        {loading ? <Spinner animation="border" size="sm" /> : <><GoogleIcon style={{ color: '#F5F5DC' }} /> Sign Up with Google</>}
                                     </MDBBtn>
                                 )}
                             />
