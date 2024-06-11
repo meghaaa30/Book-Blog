@@ -2,9 +2,9 @@
 
 .cardreview{
     float: left;
-  width: 20%;
+  width: 50%;
   justify-content: center;
-  
+ 
 }
 
 .card{
@@ -12,6 +12,12 @@
     margin-top: 30px;
     border-radius: 4px;
     color:  black;
+    margin-right: 25px;
+    
+}
+
+.flex-row{
+  height: 250px;
 }
 
 .card-img-top{
@@ -29,9 +35,26 @@
 }
 
 .read-reviews{
-    padding-top: 120px;
+    padding-top: 15px;
+}
+ 
+.read-reviewed{
+  padding-top: 75px;
 }
 
+.btn {
+  
+  background-color: #6b4423;
+  color: #F5F5DC;
+  margin-top: 55px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #361a03;
+  color: #F5F5DC;
+}
   
   .search-bar {
     
