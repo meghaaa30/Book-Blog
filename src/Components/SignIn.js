@@ -36,6 +36,7 @@ function SignIn() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+        setMessage('');
         try {
             const response = await fetch("http://localhost:5000/api/auth/sign-in", {
                 method: 'POST',
@@ -64,12 +65,13 @@ function SignIn() {
     };
 
     const onChange = (e) => {
-        setCredentials({ ...credentials, [e.target.id]: e.target.value });
         setMessage('');
+        setCredentials({ ...credentials, [e.target.id]: e.target.value });
     };
 
     const sendGoogleToken = async (tokenId) => {
         setLoading(true);
+        setMessage('');
         try {
             const response = await fetch('http://localhost:5000/api/auth/googlelogin', {
                 method: 'POST',
@@ -150,7 +152,10 @@ function SignIn() {
                                         className="mb-2 w-100"
                                         size="lg"
                                         style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }}
-                                        onClick={renderProps.onClick}
+                                        onClick={() => {
+                                            setMessage('');
+                                            renderProps.onClick();
+                                        }}
                                         disabled={renderProps.disabled || loading}
                                     >
                                         {loading ? <Spinner animation="border" size="sm" /> : <><GoogleIcon style={{ color: '#F5F5DC' }} /> Sign in with Google</>}
