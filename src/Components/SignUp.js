@@ -38,6 +38,7 @@ function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+        setMessage('');
         try {
             const response = await fetch("http://localhost:5000/api/auth/sign-up", {
                 method: 'POST',
@@ -82,6 +83,7 @@ function SignUp() {
 
     const sendGoogleToken = async (tokenId) => {
         setLoading(true);
+        setMessage('');
         try {
             const response = await fetch('http://localhost:5000/api/auth/googlelogin', {
                 method: 'POST',
@@ -181,7 +183,10 @@ function SignUp() {
                                         className="mb-2 w-100"
                                         size="lg"
                                         style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }}
-                                        onClick={renderProps.onClick}
+                                        onClick={() => {
+                                            setMessage('');
+                                            renderProps.onClick();
+                                        }}
                                         disabled={renderProps.disabled || loading}
                                     >
                                         {loading ? <Spinner animation="border" size="sm" /> : <><GoogleIcon style={{ color: '#F5F5DC' }} /> Sign Up with Google</>}
