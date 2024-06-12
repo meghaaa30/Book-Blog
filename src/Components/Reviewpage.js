@@ -1,13 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Card, Container } from 'react-bootstrap';
 import { ReviewContext } from '../Context/reviewContext';
 
 const Reviews = () => {
     const host = "http://localhost:5000";
     const location = useLocation();
     const { title } = location.state;
-    const Context = useContext(ReviewContext)
-    const { reviews, setReviews } = Context
+    const Context = useContext(ReviewContext);
+    const { reviews, setReviews } = Context;
 
     useEffect(() => {
         const fetchReviews = async () => {
@@ -29,24 +30,27 @@ const Reviews = () => {
     }, [title, setReviews]);
 
     return (
-        <div className='read-reviews'>
-            <h1>Reviews for {title.toUpperCase()}</h1>
+        <Container className='read-reviewed mt-5'>
+            <h1 className='text-center mb-4'>Reviews for {title.toUpperCase()}</h1>
             {reviews.length > 0 ? (
                 reviews.map((review) => (
-                    <div key={review._id} className="review-card">
-
-                        <p>{review.review}</p>
-                        {review.user ? (
-                            <p>{`Reviewed by: ${review.user.firstName} ${review.user.lastName}`}</p>
-                        ) : (
-                            <p>Reviewer details not available</p>
-                        )}
-                    </div>
+                    <Card key={review._id} className='review-card'>
+                        <Card.Body>
+                            <Card.Text>{review.review}</Card.Text>
+                            {review.user ? (
+                                <Card.Footer className="text-muted">
+                                    Reviewed by: {`${review.user.firstName} ${review.user.lastName}`}
+                                </Card.Footer>
+                            ) : (
+                                <Card.Footer className="text-muted">Reviewer details not available</Card.Footer>
+                            )}
+                        </Card.Body>
+                    </Card>
                 ))
             ) : (
-                <p>No reviews found for this book.</p>
+                <p className='text-center'>No reviews found for this book.</p>
             )}
-        </div>
+        </Container>
     );
 };
 

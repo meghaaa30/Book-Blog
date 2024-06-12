@@ -40,18 +40,18 @@ const ReviewItems = ({ title, reviews }) => {
   };
 
   return (
-    <div className='container'>
-      <div className='cardreview'>
-        <div className="card" style={{ width: '15em', height: '25em' }}>
+    <div className="container">
+      <div className="cardreview">
+        <div className="card flex-row">
           {matchingBook && matchingBook.coverUrl && (
-            <img className="card-img-top" src={matchingBook.coverUrl} alt={title} />
+            <img className="card-img-left example-card-img-responsive" src={matchingBook.coverUrl} alt={title} />
           )}
           <div className="card-body">
-            <h2 className="card-title">{title}</h2>
+            <h4 className="card-title h5 h4-sm">{title}</h4>
             {Array.from(new Set(reviews.map(review => review.author))).map((author, index) => (
               <p key={index} className="card-text">{author}</p>
             ))}
-            <button onClick={handleClick} className="btn button" style={{ backgroundColor: '#6b4423', color: '#F5F5DC', padding: '4px' }}>
+            <button onClick={handleClick} className="btn read-reviews">
               Read Reviews
             </button>
           </div>

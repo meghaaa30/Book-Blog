@@ -52,13 +52,15 @@
     "web-vitals": "^2.1.4",
     "yarn": "^1.22.22"
   },
+  
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "both": "concurrently \"npm run start\" \"nodemon backend/index.js\""
-  },
+  "start": "react-app-rewired start",
+  "build": "react-app-rewired build",
+  "test": "react-app-rewired test",
+  "eject": "react-scripts eject",
+  "both": "concurrently \"npm run start\" \"nodemon backend/index.js\""
+},
+
   "eslintConfig": {
     "extends": [
       "react-app",
