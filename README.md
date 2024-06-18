@@ -131,7 +131,7 @@ _To add your reviews to our platform, simply create an account and log in. Once 
 
 - Megha -
   Email: meghasharma4982@gmail.com
-  Linkedin:
+  Linkedin: http://www.linkedin.com/in/megha-sharma-597a80222
 
 - Tanishka -
   Email: tanishkasingh2004@gmail.com
