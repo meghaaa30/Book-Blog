@@ -3,6 +3,7 @@ import aboutImage from '../assets/images/about.jpg';
 import infoImage from '../assets/images/info.avif';
 import testimonialImage from '../assets/images/testimonial.jpg';
 import Footer from './Footer';
+import '../styles/Footer.css';
 
 function About() {
     return (

@@ -7,7 +7,7 @@ function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="text-center text-lg-start text-white" style={{ backgroundColor: "#361a03", fontFamily: "Poppins" }}>
+    <footer className="text-center text-lg-start text-white footer">
       <div className="container p-4 pb-0">
         <section className="">
           <div className="row">
@@ -33,12 +33,12 @@ function Footer() {
             </div>
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 className="text-uppercase mb-4 font-weight-bold">Follow us</h6>
-              <a href="https://github.com/taniishkaaa/Book-Blog" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-floating m-1" style={{ backgroundColor: "#6b4423", boxShadow: 'none' }} role="button"><GitHubIcon /></a>
+              <a href="https://github.com/taniishkaaa/Book-Blog" target="_blank" rel="noopener noreferrer" role="button"><GitHubIcon className="footer-icon" /></a>
             </div>
           </div>
         </section>
       </div>
-      <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
+      <div className="text-center p-3 copyright">
         Copyright ⓒ {year}:
         <a className="text-white" href="/"> Book-Blog</a>
       </div>

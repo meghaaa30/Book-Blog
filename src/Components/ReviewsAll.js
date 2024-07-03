@@ -42,7 +42,7 @@ function ReviewsAll() {
 
         </div>
         <div className="reviews">
-          <h1>All Reviews</h1>
+          <h1>Browse All Reviews</h1>
           {Object.keys(groupedReviews).length === 0 ? (
             <div>No reviews available.</div>
           ) : (

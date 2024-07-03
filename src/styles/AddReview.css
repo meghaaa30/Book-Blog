@@ -1,0 +1,45 @@
+.review-form-container {
+    border-radius: 2rem;
+    max-width: 1000px;
+    min-height: 600px;
+    margin-top: 50px;
+    font-family: Poppins;
+}
+
+.review-form-container.expand {
+    min-height: 650px;
+}
+
+.review-form-header {
+    color: #361a03;
+}
+
+.review-form-success {
+    margin-bottom: 1rem;
+}
+
+.review-form-button {
+    background-color: #361a03 !important;
+    color: #F5F5DC !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.review-form-button:hover {
+    background-color: #361a03 !important;
+    color: #F5F5DC !important;
+    box-shadow: none !important;
+}
+
+.review-form-button:active {
+    background-color: #361a03 !important;
+    color: #F5F5DC !important;
+    box-shadow: none !important;
+}
+
+.review-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

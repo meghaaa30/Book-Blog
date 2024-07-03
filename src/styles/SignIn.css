@@ -1,0 +1,71 @@
+.container-fluid {
+    margin-top: 50px;
+}
+
+.card-form {
+    border-radius: 1rem;
+    max-width: 500px;
+    background-color: #F5F5DC;
+    font-family: Poppins;
+}
+
+.card-form-body {
+    padding: 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #361a03;
+}
+
+.alert {
+    margin-top: 3rem;
+}
+
+.form-input {
+    margin-bottom: 4rem;
+    width: 100%;
+}
+
+.submit-button {
+    margin-bottom: 2rem;
+    width: 100%;
+    background-color: #361a03 !important;
+    color: #F5F5DC;
+    box-shadow: none !important;
+    border: none;
+}
+
+.sign-up-text {
+    margin-bottom: 0;
+    color: #361a03;
+}
+
+.sign-up-link {
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-decoration: none;
+}
+
+.hr-custom {
+    margin: 1rem 0;
+    color: #361a03 !important;
+}
+
+.google-button {
+    margin-bottom: 2rem;
+    width: 100%;
+    background-color: #361a03 !important;
+    color: #F5F5DC;
+    box-shadow: none !important;
+    border: none;
+}
+
+.google-icon {
+    color: #F5F5DC;
+}

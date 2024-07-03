@@ -1,0 +1,14 @@
+.footer {
+    background-color: #361a03;
+    font-family: "Poppins";
+}
+
+.footer-icon {
+    background-color: #361a03 !important;
+    box-shadow: none !important;
+    border: none;
+}
+
+.copyright {
+    background-color: rgba(0, 0, 0, 0.2);
+}
