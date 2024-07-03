@@ -1,0 +1,84 @@
+.bookstrip-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.bookstrip-header {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 400px;
+    margin-left: 40px;
+}
+
+.bookstrip-title {
+    font-family: 'Poppins';
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #F5F5DC;
+    text-align: left;
+    margin-bottom: 0;
+    padding-bottom: 12px;
+}
+
+.bookstrip-subtitle {
+    font-family: 'Poppins';
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #F5F5DC;
+    text-align: left;
+    margin: 0;
+}
+
+.bookstrip-signup-button {
+    transition: background 0.3s;
+    cursor: pointer;
+    font-size: 25px;
+    box-shadow: none !important;
+    background-color: #361a03;
+    color: #F5F5DC;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Poppins';
+    border: none;
+}
+
+.bookstrip-signup-button:hover {
+    background-color: #F5F5DC;
+    color: #361a03;
+}
+
+.bookstrip-signin-button {
+    background-color: #6b4423;
+    color: #F5F5DC !important;
+    text-decoration: underline;
+    font-size: 25px;
+    box-shadow: none !important;
+    font-weight: 700;
+    font-family: 'Poppins';
+    border: none;
+}
+
+.bookstrip-signin-button:hover {
+    background-color: #6b4423;
+    color: #F5F5DC;
+}
+
+.bookstrip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.bookstrip-book {
+    transition: opacity 1s ease-in-out;
+}
+
+.bookstrip-book img {
+    width: 130px;
+    height: 180px;
+    cursor: pointer;
+}

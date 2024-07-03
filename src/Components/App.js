@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import Header from "./Header";
-import SignUp from './SignUp';
-import SignIn from './SignIn';
 import { ReviewProvider } from "../Context/reviewContext";
 import { AuthContext, AuthProvider } from "../Context/AuthContext";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import Header from "./Header";
+import SignUp from './SignUp';
+import SignIn from './SignIn';
 import Reviews from "./Reviewpage";
 import ReviewAdded from "./ReviewAdded";
 import Discover from "./Discover";
@@ -14,6 +14,8 @@ import About from "./About";
 import '../styles/Reviewitems.css';
 import '../styles/Signout.css';
 import '../styles/About.css';
+import '../styles/BookStrip.css';
+import '../styles/SignIn.css';
 
 function App() {
   return (

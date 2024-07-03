@@ -10,6 +10,7 @@ import {
   MDBInput,
   MDBTextArea
 } from 'mdb-react-ui-kit';
+import '../styles/AddReview.css';
 
 function ReviewAdded() {
   const context = useContext(ReviewContext);
@@ -17,7 +18,7 @@ function ReviewAdded() {
 
   const [reviewed, setReviewed] = useState({ title: "", author: "", review: "" });
   const [showSuccess, setShowSuccess] = useState(false);
-  const [cardHeight, setCardHeight] = useState('600px'); 
+  const [cardHeight, setCardHeight] = useState('review-form-container');
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -28,12 +29,11 @@ function ReviewAdded() {
     window.dispatchEvent(event);
 
     setShowSuccess(true);
-    setCardHeight('650px'); 
+    setCardHeight('review-form-container expand');
 
-  
     setTimeout(() => {
       setShowSuccess(false);
-      setCardHeight('600px'); 
+      setCardHeight('review-form-container');
     }, 3000);
 
     setReviewed({ title: "", author: "", review: "" });
@@ -44,22 +44,22 @@ function ReviewAdded() {
   };
 
   return (
-    <MDBContainer fluid style={{ marginTop: '50px' }}>
-      <MDBRow className='d-flex justify-content-center align-items-center h-150'>
+    <MDBContainer fluid className="review-form-container">
+      <MDBRow className='review-form-wrapper'>
         <MDBCol col='12'>
-          <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '1000px', minHeight: cardHeight }}>
-            <MDBCardBody className='p-5 w-100 d-flex flex-column' style={{ height: '100%' }}>
-              <h2 className="fw-bold mb-2 text-center" style={{ color: '#361a03' }}>Add Review</h2>
+          <MDBCard className={`bg-white my-5 mx-auto ${cardHeight}`}>
+            <MDBCardBody className='p-5 w-100 d-flex flex-column'>
+              <h2 className="fw-bold mb-2 text-center review-form-header">Add Review</h2>
               {showSuccess && (
-                <div className='alert alert-success mb-4'>
+                <div className='alert alert-success review-form-success'>
                   Review added successfully!
                 </div>
               )}
               <form onSubmit={handleClick}>
-                <MDBInput wrapperClass='mb-4 w-100' label='Book Name' id='title' name='title' type='text' size="lg" onChange={onChange} value={reviewed.title} />
-                <MDBInput wrapperClass='mb-4 w-100' label='Author Name' id='author' name='author' type='text' size="lg" onChange={onChange} value={reviewed.author} />
-                <MDBTextArea wrapperClass='mb-4 w-100' label="Write a review" id="review" name='postContent' rows={7} type='text' size="lg" onChange={onChange} value={reviewed.review} />
-                <MDBBtn size='lg' className="mb-2 w-100" style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }} type='submit'>
+                <MDBInput wrapperClass='mb-4 w-100' label='Book Name' id='title' name='title' type='text' size="lg" onChange={onChange} value={reviewed.title} required />
+                <MDBInput wrapperClass='mb-4 w-100' label='Author Name' id='author' name='author' type='text' size="lg" onChange={onChange} value={reviewed.author} required />
+                <MDBTextArea wrapperClass='mb-4 w-100' label="Write a review" id="review" name='postContent' rows={7} type='textarea' size="lg" onChange={onChange} value={reviewed.review} required />
+                <MDBBtn size='lg' className="mb-2 w-100 review-form-button" type='submit'>
                   Add Review
                 </MDBBtn>
               </form>

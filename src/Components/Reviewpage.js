@@ -39,7 +39,7 @@ const Reviews = () => {
                             <Card.Text>{review.review}</Card.Text>
                             {review.user ? (
                                 <Card.Footer className="text-muted">
-                                    Reviewed by: {`${review.user.firstName} ${review.user.lastName}`}
+                                    Review by: {`${review.user.firstName} ${review.user.lastName}`}
                                 </Card.Footer>
                             ) : (
                                 <Card.Footer className="text-muted">Reviewer details not available</Card.Footer>

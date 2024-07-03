@@ -120,16 +120,16 @@ function SignUp() {
     };
 
     return (
-        <MDBContainer fluid style={{ marginTop: '50px' }}>
+        <MDBContainer fluid className="container-fluid">
             <MDBRow className='d-flex justify-content-center align-items-center h-100'>
                 <MDBCol col='12'>
-                    <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '500px', backgroundColor: '#F5F5DC' }}>
-                        <MDBCardBody className='p-5 w-100 d-flex flex-column'>
-                            <h2 className="fw-bold mb-2 text-center" style={{ color: '#361a03' }}>Sign Up</h2>
-                            {message && <Alert variant={alertVariant} className='mt-3'>{message}</Alert>}
+                    <MDBCard className='bg-white my-5 mx-auto card-form'>
+                        <MDBCardBody className='p-5 w-100 d-flex flex-column card-form-body'>
+                            <h2 className="fw-bold mb-2 text-center title">Sign Up</h2>
+                            {message && <Alert variant={alertVariant} className='mt-3 alert'>{message}</Alert>}
                             <form onSubmit={handleSubmit}>
                                 <MDBInput
-                                    wrapperClass='mb-4 w-100'
+                                    wrapperClass='mb-4 w-100 form-input'
                                     label='First Name'
                                     id='firstName'
                                     name='firstName'
@@ -138,7 +138,7 @@ function SignUp() {
                                     value={credentials.firstName}
                                     onChange={onChange} />
                                 <MDBInput
-                                    wrapperClass='mb-4 w-100'
+                                    wrapperClass='mb-4 w-100 form-input'
                                     label='Last Name'
                                     id='lastName'
                                     name='lastName'
@@ -147,7 +147,7 @@ function SignUp() {
                                     value={credentials.lastName}
                                     onChange={onChange} />
                                 <MDBInput
-                                    wrapperClass='mb-4 w-100'
+                                    wrapperClass='mb-4 w-100 form-input'
                                     label='Email address'
                                     id='email'
                                     name='email'
@@ -156,7 +156,7 @@ function SignUp() {
                                     value={credentials.email}
                                     onChange={onChange} />
                                 <MDBInput
-                                    wrapperClass='mb-4 w-100'
+                                    wrapperClass='mb-4 w-100 form-input'
                                     label='Password'
                                     id='password'
                                     name='password'
@@ -166,12 +166,12 @@ function SignUp() {
                                     onChange={onChange}
                                     required
                                     minLength={8} />
-                                <MDBBtn type='submit' className="mb-2 w-100" size='lg' style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }} disabled={loading}>
+                                <MDBBtn type='submit' className="mb-2 w-100 submit-button" size='lg' disabled={loading}>
                                     {loading ? <Spinner animation="border" size="sm" /> : 'Sign Up'}
                                 </MDBBtn>
                             </form>
-                            <p className="mb-0" style={{ color: '#361a03' }}>Already have an account? <NavLink to={{ pathname: "/sign-in", state: { from: location.state?.from || "/" } }} className='fw-bold mb-2 sign-up-link'>Sign In</NavLink></p>
-                            <hr className="my-4" style={{ color: '#361a03' }} />
+                            <p className="mb-0 sign-up-text">Already have an account? <NavLink to={{ pathname: "/sign-in", state: { from: location.state?.from || "/" } }} className='fw-bold mb-2 sign-up-link'>Sign In</NavLink></p>
+                            <hr className="my-4 hr hr-custom" />
                             <GoogleLogin
                                 clientId={clientId}
                                 onSuccess={responseGoogle}
@@ -180,16 +180,15 @@ function SignUp() {
                                 render={(renderProps) => (
                                     <MDBBtn
                                         type='button'
-                                        className="mb-2 w-100"
+                                        className="mb-2 w-100 google-button"
                                         size="lg"
-                                        style={{ backgroundColor: '#361a03', color: '#F5F5DC', boxShadow: 'none' }}
                                         onClick={() => {
                                             setMessage('');
                                             renderProps.onClick();
                                         }}
                                         disabled={renderProps.disabled || loading}
                                     >
-                                        {loading ? <Spinner animation="border" size="sm" /> : <><GoogleIcon style={{ color: '#F5F5DC' }} /> Sign Up with Google</>}
+                                        {loading ? <Spinner animation="border" size="sm" /> : <><GoogleIcon className="google-icon" /> Sign Up with Google</>}
                                     </MDBBtn>
                                 )}
                             />

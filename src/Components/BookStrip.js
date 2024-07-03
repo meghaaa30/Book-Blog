@@ -10,7 +10,6 @@ function BookStrip() {
     const [allBooks, setAllBooks] = useState([]);
     const [displayedBooks, setDisplayedBooks] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(-1);
-    const [isHovered, setIsHovered] = useState(false);
     const { isAuth } = useContext(AuthContext);
     const history = useHistory();
 
@@ -19,7 +18,7 @@ function BookStrip() {
             const data = await fetchBooks();
             if (data) {
                 setAllBooks(data);
-                const initialBooks = data.slice(0, 9); // Initially display the first 9 books
+                const initialBooks = data.slice(0, 9);
                 setDisplayedBooks(initialBooks);
                 setCurrentIndex(0);
             }
@@ -30,8 +29,6 @@ function BookStrip() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (allBooks.length === 0) return;
-
             if (allBooks.length === 0) return;
 
             let newBooks = [...displayedBooks];
@@ -48,14 +45,6 @@ function BookStrip() {
         return () => clearInterval(interval);
     }, [allBooks, displayedBooks]);
 
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
-
     const handleClick = (title) => {
         history.push({
             pathname: "/reviews",
@@ -66,65 +55,56 @@ function BookStrip() {
 
     return (
         <BrowserRouter forceRefresh={true}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', marginRight: '400px', marginLeft: '40px' }}>
+            <div className="bookstrip-container">
+                <div className="bookstrip-header">
                     <div>
-                        <h1 style={{ fontFamily: 'Poppins', fontSize: '4.5rem', fontWeight: '700', color: '#F5F5DC', textAlign: 'left', marginBottom: '0', paddingBottom: '12px' }}>
+                        <h1 className="bookstrip-title">
                             Book-Blog
                         </h1>
-                        <p style={{ fontFamily: 'Poppins', fontSize: '2.5rem', fontWeight: '500', color: '#F5F5DC', textAlign: 'left', marginBottom: '0', marginTop: '0' }}>
+                        <p className="bookstrip-subtitle">
                             Discover your next favorite book with
                         </p>
-                        <p style={{ fontFamily: 'Poppins', fontSize: '2.5rem', fontWeight: '500', color: '#F5F5DC', textAlign: 'left', marginTop: '0', paddingBottom: '20px' }}>
+                        <p className="bookstrip-subtitle" style={{ paddingBottom: '20px' }}>
                             our insightful reviews.
                         </p>
                         {!isAuth ? (
                             <div style={{ display: 'flex', alignItems: 'flex-start' }}>
                                 <Link to="/sign-up" style={{ textDecoration: 'none' }}>
-                                    <MDBBtn type='submit' size='lg'
-                                        onMouseEnter={handleMouseEnter}
-                                        onMouseLeave={handleMouseLeave}
-                                        style={{
-                                            transition: 'background 0.3s',
-                                            cursor: 'pointer',
-                                            fontSize: '25px',
-                                            boxShadow: 'none',
-                                            backgroundColor: isHovered ? '#F5F5DC' : '#361a03',
-                                            color: isHovered ? '#361a03' : '#F5F5DC',
-                                            textDecoration: 'none',
-                                            fontWeight: '700',
-                                            fontFamily: 'Poppins',
-                                        }}>
+                                    <MDBBtn
+                                        className="bookstrip-signup-button"
+                                        size='lg'
+                                    >
                                         Sign Up
                                     </MDBBtn>
                                 </Link>
 
-                                <MDBBtn type='submit' size='lg' style={{ backgroundColor: '#6b4423', color: '#F5F5DC !important', textDecoration: 'underline', fontSize: '25px', boxShadow: 'none', fontWeight: '700', fontFamily: 'Poppins', }}>
+                                <MDBBtn
+                                    className="bookstrip-signin-button"
+                                    size='lg'
+                                >
                                     <Link to="/sign-in">Sign In</Link>
                                 </MDBBtn>
                             </div>
                         ) : null}
                     </div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
+                <div className="bookstrip-grid">
                     {displayedBooks.map((book, index) => (
                         book && book.coverUrl ? (
                             <div
                                 key={index}
-                                className="book"
+                                className="bookstrip-book"
                                 style={{
-                                    opacity: index === currentIndex ? 0 : 1, // Fade out/in based on index
-                                    transition: 'opacity 1s ease-in-out', // CSS transition for fading effect
+                                    opacity: index === currentIndex ? 0 : 1,
                                 }}
                             >
                                 <img
                                     src={book.coverUrl}
                                     alt={book.title}
-                                    style={{ width: '130px', height: '180px', cursor: 'pointer' }}
                                     onClick={() => handleClick(book.title)}
                                 />
                             </div>
-                        ) : (null)
+                        ) : null
                     ))}
                 </div>
             </div>
@@ -134,6 +114,6 @@ function BookStrip() {
             </Switch>
         </BrowserRouter>
     );
-};
+}
 
 export default BookStrip;
