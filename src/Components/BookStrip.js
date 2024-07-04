@@ -68,7 +68,7 @@ function BookStrip() {
                             our insightful reviews.
                         </p>
                         {!isAuth ? (
-                            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                            <div className="buttons">
                                 <Link to="/sign-up" style={{ textDecoration: 'none' }}>
                                     <MDBBtn
                                         className="bookstrip-signup-button"
