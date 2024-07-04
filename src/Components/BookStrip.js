@@ -90,21 +90,18 @@ function BookStrip() {
                 </div>
                 <div className="bookstrip-grid">
                     {displayedBooks.map((book, index) => (
-                        book && book.coverUrl ? (
-                            <div
-                                key={index}
-                                className="bookstrip-book"
-                                style={{
-                                    opacity: index === currentIndex ? 0 : 1,
-                                }}
-                            >
-                                <img
-                                    src={book.coverUrl}
-                                    alt={book.title}
-                                    onClick={() => handleClick(book.title)}
-                                />
-                            </div>
-                        ) : null
+                        <div
+                            key={book.key}
+                            className="book"
+                            style={{
+                                opacity: index === currentIndex ? 0 : 1, // Fade out/in based on index
+                                transition: 'opacity 1s ease-in-out', // CSS transition for fading effect
+                            }}
+                        >
+                            <a href={`https://openlibrary.org${book.key}`} target="_blank" rel="noopener noreferrer">
+                                <img src={`https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`} alt={book.title} style={{ width: '130px', height: '180px' }} />
+                            </a>
+                        </div>
                     ))}
                 </div>
             </div>
