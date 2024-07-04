@@ -31,7 +31,9 @@ function ReviewsAll() {
 
   return (
     <>
+    
       <div className="reviews-container">
+      <h1>Browse All Reviews</h1>
         <div className="search-bar">
           <input
             type="search"
@@ -42,7 +44,7 @@ function ReviewsAll() {
 
         </div>
         <div className="reviews">
-          <h1>Browse All Reviews</h1>
+          
           {Object.keys(groupedReviews).length === 0 ? (
             <div>No reviews available.</div>
           ) : (

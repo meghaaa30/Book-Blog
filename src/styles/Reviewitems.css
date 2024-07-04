@@ -15,6 +15,22 @@
 
 }
 
+@media (min-width: 0px) and (max-width: 992px) {
+  
+  .cardreview{
+    width:100%; 
+  }
+
+   
+}
+
+@media (max-width: 400px){
+    .btn.read-reviews{
+      margin-top: 8px;
+    }
+  
+}
+
 .card-title {
   font-size: 1.5rem;
 }
@@ -63,12 +79,18 @@
   color: #F5F5DC;
 }
 
+
+.reviews-container{
+   padding-top: 100px;
+}
+
+
 .search-bar {
 
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-end;
-  padding-top: 100px;
+  padding-top: 20px;
   margin-right: 20px;
 }
 
