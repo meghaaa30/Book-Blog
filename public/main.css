@@ -21,7 +21,7 @@
     color: #F5F5DC;
     background-color: #361a03;
   }
-
+   
   .Toolbar-root {
     display: flex;
     position: relative;
@@ -31,7 +31,7 @@
   .Toolbar-regular {
     min-height: 56px;
   }
-  @media (min-width: 0px) and (orientation: landscape) {
+  @media (min-width: 1024px) and (orientation: landscape) {
     .Toolbar-regular {
       min-height: 48px;
     }
