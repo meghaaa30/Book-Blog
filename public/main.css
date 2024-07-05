@@ -1,3 +1,50 @@
+.header-logo {
+  height: 40px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  gap: 20px;
+}
+
+.nav-links a,
+.logout-button {
+  color: white;
+  text-decoration: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+@media (max-width: 680px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color:  #361a03;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
 .app-root-1 {
   flex-grow: 1;
 }
@@ -32,24 +79,6 @@
   min-height: 56px;
 }
 
-@media (min-width: 0px) and (orientation: landscape) {
-  .Toolbar-regular {
-    min-height: 48px;
-  }
-}
-
-  @media (min-width: 600px) {
-    .Toolbar-regular {
-      min-height: 64px;
-  }
-}
-
-@media (min-width: 600px) {
-  .Toolbar-regular {
-    min-height: 64px;
-  }
-}
-
 .header-appBar-13 {
   height: 80px;
   border-bottom: 0.4px solid #F5F5DC;
@@ -58,13 +87,6 @@
 .Toolbar-gutters {
   padding-left: 16px;
   padding-right: 16px;
-}
-
-@media (min-width: 600px) {
-  .Toolbar-gutters {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
 }
 
 .header-left-4 {
