@@ -4,6 +4,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 function Header() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
@@ -46,28 +47,34 @@ function Header() {
           <div className="header-empty-6"></div>
           <div className="header-space-8"></div>
           <button className="hamburger" onClick={toggleMenu}>
-            <MenuIcon />
+            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
           <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+            <hr className="nav-divider" />
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3" onClick={closeMenu}>
               <NavLink to="/discover">Discover</NavLink>
             </button>
+            <hr className="nav-divider" />
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3" onClick={closeMenu}>
               <NavLink to={{ pathname: "/add", state: { from: history.location.pathname } }}>Add Review</NavLink>
             </button>
+            <hr className="nav-divider" />
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3" onClick={closeMenu}>
               <NavLink to="/about">About Us</NavLink>
             </button>
+            <hr className="nav-divider" />
             {isAuth && (
-              <button
-                className="ButtonBase-root Button-root Button-text header-navButtons-3 logout-button"
-                onClick={() => { handleLogout(); closeMenu(); }}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                {!isHovered && <LogoutIcon />}
-                {isHovered && <span className="logout-text">Sign Out</span>}
-              </button>
+              <>
+                <button
+                  className="ButtonBase-root Button-root Button-text header-navButtons-3 logout-button"
+                  onClick={() => { handleLogout(); closeMenu(); }}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {!isHovered && <LogoutIcon />}
+                  {isHovered && <span className="logout-text">Sign Out</span>}
+                </button>
+              </>
             )}
           </div>
         </div>
