@@ -3,6 +3,10 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
+    z-index: 2;
+    top: 0;
+    overflow: hidden;
 }
 
 .bookstrip-header {
@@ -55,7 +59,7 @@
 }
 
 .bookstrip-signin-button {
-    background-color: #6b4423;
+    background-color: transparent;
     color: #F5F5DC !important;
     text-decoration: underline;
     font-size: 25px;
@@ -66,7 +70,7 @@
 }
 
 .bookstrip-signin-button:hover {
-    background-color: #6b4423;
+    background-color: transparent;
     color: #F5F5DC;
 }
 
@@ -76,7 +80,7 @@
     gap: 20px;
     align-items: flex-start;
     justify-content: flex-end;
-    margin-top: 70px;
+    margin-top: -10px;
 }
 
 .bookstrip-book {
@@ -241,4 +245,188 @@
         justify-content: center;
         margin-right: 20px;
     }
+}
+
+.about-us {
+    top: 100px;
+}
+
+@media (min-width: 0px) and (max-width: 853px){
+    .info{
+       display: flex;
+       flex-direction: column;
+       width: 100%;
+    }   
+    .info-image{
+        padding-top: 10px;
+        width: 100%;
+    }
+    .info-text{
+        width: 100%;
+        padding: 0px;   
+    }
+    .info-text h2{
+        justify-content: center;
+        align-content: center;
+    }
+}
+@media (min-width: 0px) and (max-width: 853px){
+    h1.about-text{
+            width: 100%;
+            font-size: 2rem;  
+            padding-right: 20px;
+            font-weight: 200px;
+            padding-top: 20px; 
+        }
+    }
+
+.about-image-container {   
+    padding-top: 80px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.about-image {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: blur(1.2px);
+    -webkit-filter: blur(1.2px);
+    z-index: 1;
+}
+
+.quote {
+    height: 300px;
+    background-color: #b5865e;
+}
+
+.quote-text {
+    color: #F5F5DC;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 300px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #a76248;
+}
+
+.info-image {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+.info-text {
+    width: 50%;
+    padding: 0 45px;
+    box-sizing: border-box;
+    text-align: left;
+    color: #F5F5DC;
+    font-family: Poppins;
+}
+
+.info-text h2 {
+    font-size: 2em;
+}
+
+.info-text p {
+    font-size: 1em;
+    line-height: 1.3;
+}
+
+@media (min-width: 0px) and (max-width: 816px){
+    .testimonial{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+    }   
+    .testimonial img{
+        padding-top: 10px;
+        width: 100%;
+        padding-right: 0px;
+    }
+    .testimonial-text{
+        width: 100%;
+        padding: 0px;   
+    }
+
+} 
+
+.testimonial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #80461B;
+    margin-top: 150px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 150px;
+    height: 500px;
+}
+
+.testimonial-text {
+    width: 50%;
+    padding: 60px;
+    text-align: left;
+    color: #F5F5DC;
+    font-family: Poppins;
+}
+
+.testimonial img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.testimonial-text p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+.about-us .about-image-container,
+.about-us .quote,
+.about-us .info,
+.about-us .testimonial {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+  
+.about-us .about-image-container {
+    animation-delay: 0s;
+}
+  
+.about-us .quote {
+    animation-delay: 0.5s;
+}
+  
+.about-us .info {
+    animation-delay: 1s;
+}
+  
+.about-us .testimonial {
+    animation-delay: 1.5s;
 }

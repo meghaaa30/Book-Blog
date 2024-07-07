@@ -13,7 +13,7 @@ import BookStrip from "./BookStrip";
 import About from "./About";
 import '../styles/Reviewitems.css';
 import '../styles/Signout.css';
-import '../styles/About.css';
+// import '../styles/About.css';
 import '../styles/BookStrip.css';
 import '../styles/SignIn.css';
 

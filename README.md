@@ -133,7 +133,7 @@ _To add your reviews to our platform, simply create an account and log in. Once 
 
 ## Contact
 
-- Mail us at: bookblog@gmail.com
+- Mail us at: bookblogbymt@gmail.com
 
 - Megha -
   Email: meghasharma4982@gmail.com

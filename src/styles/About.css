@@ -36,29 +36,17 @@
     padding-top: 80px;
     width: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 .about-image {
+    position: absolute;
     width: 100%;
     height: auto;
     display: block;
     filter: blur(1.2px);
     -webkit-filter: blur(1.2px);
-}
-
-.about-text-overlay {
-    position: absolute;
-    top: 55%;
-    left: 75%;
-    transform: translate(-50%, -50%);
-}
-
-.about-text {
-    font-family: Poppins;
-    font-size: 4.5rem;
-    font-weight: 700;
-    color: #361a03;
-    /* text-align: right; */
+    z-index: 1;
 }
 
 .quote {
@@ -70,15 +58,15 @@
     color: #F5F5DC;
     font-family: Poppins;
     font-size: 1.5rem;
-    padding-top: 117px;
-     /* line-height: 300px; */ 
+    text-align: center;
+    vertical-align: middle;
+    line-height: 300px;
 }
 
 .info {
-    padding-top: 20px;
     display: flex;
-     align-items: center;
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
     background-color: #a76248;
 }
 
@@ -89,7 +77,7 @@
 }
 
 .info-text {
-    
+    width: 50%;
     padding: 45px;
     text-align: left;
     color: #F5F5DC;
@@ -105,7 +93,6 @@
     font-size: 1.2em;
     line-height: 1.5;
 }
-
 
 @media (min-width: 0px) and (max-width: 816px){
     .testimonial{
@@ -127,36 +114,33 @@
 
 .testimonial {
     display: flex;
-    background-color: #80461B;
-/*     
-   margin-left: 80px;
-    margin-right: 80px;
-    margin-bottom: 150px;   */
     align-items: center;
-    justify-content: center; 
-        height: 600px;
+    justify-content: center;
+    background-color: #80461B;
+    margin-top: 150px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 150px;
+    height: 500px;
 }
 
 .testimonial-text {
-
-    padding: 40px;
+    width: 50%;
+    padding: 60px;
     text-align: left;
     color: #F5F5DC;
     font-family: Poppins;
 }
 
 .testimonial img {
-    padding-right: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
     width: 50%;
     height: 100%;
     object-fit: cover;
 }
 
 .testimonial-text h2 {
-    font-size: 2.4em;
-    margin-bottom: 5px;
+    font-size: 2.5em;
+    margin-bottom: 10px;
 }
 
 .testimonial-text p {

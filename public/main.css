@@ -31,7 +31,6 @@
     gap: 10px;
     background-color: #361a03;
     position: fixed;
-    top: 56px;
     right: -100%;
     width: 100%;
     max-width: 375px;
@@ -55,6 +54,18 @@
     width: 100%;
     border: 0.5px solid #F5F5DC;
     margin: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav-links.open {
+    top: 75px;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 840px) {
+  .nav-links.open {
+    top: 56px;
   }
 }
 
