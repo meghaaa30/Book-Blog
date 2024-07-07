@@ -28,7 +28,7 @@ function Footer() {
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
               <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
               <p><FontAwesomeIcon icon={faHome} className="mr-3" /> Jaipur, RJ 302020, IN</p>
-              <p><FontAwesomeIcon icon={faEnvelope} className="mr-3" /> bookblog@gmail.com</p>
+              <p><FontAwesomeIcon icon={faEnvelope} className="mr-3" /> bookblogbymt@gmail.com</p>
               <p><FontAwesomeIcon icon={faPhone} className="mr-3" /> + 01 234 567 88</p>
             </div>
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
