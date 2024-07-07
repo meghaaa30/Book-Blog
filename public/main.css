@@ -34,9 +34,10 @@
     right: -100%;
     width: 100%;
     max-width: 375px;
-    height: 100vh;
+    height: 295px;
     z-index: 1100;
     padding: 20px;
+    border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transition: right 0.8s ease-in-out;
   }
@@ -263,6 +264,7 @@ body {
   line-height: 1.43;
   letter-spacing: 0.01071em;
   background-color: #6b4423;
+  overflow-x: hidden;
 }
 
 @media print {
