@@ -5,9 +5,8 @@ const fetch = require('../middleware/fetch');
 const { body, validationResult } = require('express-validator');
 
 router.get('/fetchreviews', async (req, res) => {
-
     try {
-        const reviewed = await reviews.find().sort({date: -1}).populate('user', 'firstName email');
+        const reviewed = await reviews.find().sort({ date: -1 }).populate('user', 'firstName email');
         res.json(reviewed);
     } catch (error) {
         res.status(400).json({ error: 'Internal server error' });
