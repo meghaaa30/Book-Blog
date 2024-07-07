@@ -1,40 +1,46 @@
 import React from 'react';
-import aboutImage from '../assets/images/about.jpg';
-import infoImage from '../assets/images/info.avif';
-import testimonialImage from '../assets/images/testimonial.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import testimonial from '../assets/images/testimonial.jpg';
 import Footer from './Footer';
 import '../styles/Footer.css';
 
 function About() {
     return (
-        <div className="about-us">
-            <div className="about-image-container">
-                <img src={aboutImage} alt="" className='img-fluid shadow-4 about-image' />
-                <div className="about-text-overlay">
-                    <h1 className='about-text'>About Book-Blog</h1>
+        <div>
+            <div className="about">
+                <div className="about-book-blog">
+                    <h1 className="about-book-blog-title">About Book-Blog</h1>
+                    <img className='mt-image' src={testimonial} alt='' />
                 </div>
             </div>
-            <div className='quote'>
-                <p className='quote-text'>"A reader lives a thousand lives before he dies." -George R. R. Martin</p>
+            <div className='our-story'>
+                <h1 className='our-story-title'>Our Story</h1>
+                <p className='our-story-text'>In April 2024, two passionate readers, driven by their love for books and the joy of discovery, embarked on a journey to create something extraordinary. Fueled by countless nights of shared stories and animated discussions about their latest reads, they envisioned a place where fellow book lovers could come together. This dream materialized into the Book-Blog project—a vibrant book-review website designed to help readers uncover their next favorite books. With honest and insightful reviews spanning bestsellers to hidden gems across various genres, Book-Blog celebrates the joy of reading and fosters a community where literature thrives. Join us in this literary adventure, where each review is crafted with passion and every book is a new discovery waiting to be explored.</p>
             </div>
-            <div className='info'>
-                <img src={infoImage} alt="" className='info-image' />
-                <div className='info-text'>
-                    <h2>For the readers, by the readers.</h2>
-                    <br></br>
-                    <p>Reading is a delightful journey that transports you to different worlds, offering an escape from reality and a chance to live countless lives through the eyes of various fascinating characters, and allows you to explore new ideas and perspectives. The joy of reading lies in its ability to ignite your imagination, evoke emotions, and leave a lasting impact long after you've turned the last page.</p>
-                    <br></br>
-                    <p>Ours is a vibrant community where fellow book lovers come together to share their passion for reading. Here, you'll find honest and insightful reviews on a wide range of books, from bestsellers to hidden gems, across various genres. Our platform is dedicated to helping you discover your next great read. Join us in celebrating the joy of reading and uncovering the treasures hidden within the pages of every book. Happy reading!</p>
+            <hr className='hr-line' />
+            <div className='team'>
+                <h1 className='team-title'>Meet Our Team</h1>
+                <div className='team-members'>
+                    <div className='megha'>
+                        <img className='member-img' src={testimonial} alt='' />
+                        <p className='name'>Megha Sharma</p>
+                        <p className='designation'>Founder</p>
+                        <p><FontAwesomeIcon icon={faEnvelope} className="mr-3" /> meghasharma4982@gmail.com</p>
+                        <a href="https://github.com/meghaaa30" target="_blank" rel="noopener noreferrer" role="button"><GitHubIcon className="social-link" /></a>
+                        <a href="http://www.linkedin.com/in/megha-sharma-597a80222" target="_blank" rel="noopener noreferrer" role="button"><LinkedInIcon className="social-link" /></a>
+                    </div>
+                    <div className='tanishka'>
+                        <img className='member-img' src={testimonial} alt='' />
+                        <p className='name'>Tanishka Singh</p>
+                        <p className='designation'>Founder</p>
+                        <p><FontAwesomeIcon icon={faEnvelope} className="mr-3" /> tanishkasingh2004@gmail.com</p>
+                        <a href="https://github.com/taniishkaaa" target="_blank" rel="noopener noreferrer" role="button"><GitHubIcon className="social-link" /></a>
+                        <a href="https://www.linkedin.com/in/tanishka-singh-a42571228/" target="_blank" rel="noopener noreferrer" role="button"><LinkedInIcon className="social-link" /></a>
+                    </div>
                 </div>
-            </div>
-            <div className='testimonial'>
-                <div className='testimonial-text'>
-                    <h2>Radically transparent;</h2>
-                    <h2>crafted with passion.</h2>
-                    <br></br>
-                    <p>Our reviews are not just critiques; they're love letters to literature, designed to guide you to your next literary adventure.</p>
-                </div>
-                <img src={testimonialImage} alt="" />
             </div>
             <Footer />
         </div>
