@@ -9,10 +9,19 @@ const ReviewItems = ({ title, reviews }) => {
     const cachedBooks = localStorage.getItem('cachedBooks');
     if (cachedBooks) {
       const books = JSON.parse(cachedBooks);
-      const foundBook = books.find(book =>
-        book.title.toLowerCase() === title.toLowerCase() &&
-        book.authors.some(author => reviews.some(review => author.toLowerCase() === review.author.toLowerCase()))
-      );
+      const removePunctuation = (str) => {
+        return str.replace(/[^\w\d]/g, '').toLowerCase();
+      };
+      const foundBook = books.find(book => {
+        const cachedTitle = removePunctuation(book.title);
+        const matchedTitle = removePunctuation(title);
+        const matchedAuthors = book.authors.some(author =>
+          reviews.some(review =>
+            removePunctuation(author).toLowerCase() === removePunctuation(review.author).toLowerCase()
+          )
+        );
+        return cachedTitle === matchedTitle && matchedAuthors;
+      });
       setMatchingBook(foundBook);
     }
   };
