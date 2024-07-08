@@ -5,30 +5,8 @@ const Book = require('../models/Review');
 // Endpoint to fetch book titles from MongoDB
 router.get('/titles', async (req, res) => {
     try {
-        const uniqueBooks = await Book.aggregate([
-            {
-                $group: {
-                    _id: {
-                        title: { $toLower: "$title" },
-                        author: { $toLower: "$author" }
-                    },
-                    title: { $first: "$title" },
-                    author: { $first: "$author" }
-                }
-            }
-        ]);
-
-        res.json(uniqueBooks.map(book => ({ title: book.title, author: book.author })));
-    } catch (error) {
-        console.error('Error fetching unique books:', error);
-        res.status(500).send('Server error');
-    }
-});
-
-router.get('/version', async (req, res) => {
-    try {
-        const latestBook = await Book.findOne().sort({ date: -1 });
-        res.json({ version: latestBook ? latestBook.date.getTime() : 0 });
+        const titles = await Book.find().select('title author'); // Adjust the query to match your schema
+        res.json(titles);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

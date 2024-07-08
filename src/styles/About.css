@@ -4,6 +4,55 @@
     height: 600px;
     width: 100%;
 }
+@media (max-width: 1056px){
+      .megha::after{
+        display: none;
+      }
+}
+
+@media (max-width: 990px) {
+    p.our-story-text{
+       width: auto;
+       padding: 0px 30px ;
+    }
+}
+
+@media (min-width: 492px) and (max-width: 690px){
+    h1.about-book-blog-title {
+        font-size: 2.5rem;
+    }
+
+}
+
+@media (max-width: 628px){
+    .our-story{
+        padding: 10px;
+    }
+}
+
+@media (min-width: 391px) and (max-width: 492px){
+    h1.about-book-blog-title{
+        font-size: 2.0rem;
+    }
+}
+
+@media (max-width: 391px){
+    h1.about-book-blog-title{
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 330px) and (max-width: 430px){
+    img.mt-image{
+        width: 300px;
+    }
+}
+
+@media (max-width: 330px){
+    img.mt-image{
+        width: 220px;
+    }
+}
 
 .about-book-blog {
     height: 350px;
@@ -36,15 +85,19 @@
     z-index: 0;
 }
 
+/* @media (min-width: 990px) and (max-width: 1448px){
+
+} */
+
 .our-story {
-    display: flex;
+    display: table-cell;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: auto;
     width: fit-content;
     background-color: #361a03;
-    margin: 20px 100px;
+    margin: 20px 80px;
     padding: 20px;
 }
 
@@ -54,13 +107,14 @@
 }
 
 .our-story-text {
-    width: 50%;
+    width: 100%;
     font-family: Poppins;
     text-align: justify;
     overflow: auto;
     max-height: calc(100% - 40px);
     font-size: 1.2em;
     line-height: 1.5;
+    padding: 10px;
 }
 
 .hr-line {
