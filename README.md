@@ -1,3 +1,5 @@
+
+https://github.com/meghaaa30/Book-Blog/assets/113107940/f6614501-3f34-4a16-9260-2d13c729fc03
 # Book-Blog
 
 _Book-Blog is crafted with a vision to create a vibrant community where book enthusiasts can connect, share, and explore diverse literary perspectives. At Book-Blog, we aim to provide an intuitive user interface that empowers users to effortlessly read and post reviews, fostering a space where readers of all backgrounds can engage and enrich their reading experiences. Whether you're a casual reader or a passionate bibliophile, Book-Blog is your go-to platform for discovering new books and sharing your literary insights._
@@ -25,7 +27,8 @@ _Book-Blog is crafted with a vision to create a vibrant community where book ent
 
 ## About The Project
 
-![product](https://imgur.com/YtUejWO.gif)
+![product](![Book-Blog-Work-Microsoft_Edge2024-07-1001-07-21online-video-cutter com-ezgif com-video-to-gif-converter](https://github.com/meghaaa30/Book-Blog/assets/113107940/a294be03-1d47-4762-b1f5-017273ae625e)
+)
 
 We provide an online portal where book enthusiasts can immerse themselves in a rich community of literary reviews. Readers can effortlessly search for reviews on their favorite books and explore a diverse array of opinions. Users can also contribute their own reviews, sharing their unique perspectives with others. Whether you're looking to discover new reads or share your thoughts on the latest bestseller, our platform offers a seamless and engaging experience for all.
 
@@ -114,10 +117,14 @@ Backend & Frontend Server:
 ```sh
 npm run both
 ```
+![Book-Blog - Work - Microsoft_ Edge 2024-07-10 01-08-00](https://github.com/meghaaa30/Book-Blog/assets/113107940/6ea1ae97-ee60-4896-80e6-f573b9113079)
+
 
 ## Usage
 
 #### 1. Read Reviews:
+
+
 
 ##### Discover Reviews Without the Hassle
 
