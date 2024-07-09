@@ -26,7 +26,7 @@ _Book-Blog is crafted with a vision to create a vibrant community where book ent
 
 ## About The Project
 
-![product](https://imgur.com/YtUejWO.gif)
+![preview](https://postimage.me/images/2024/07/09/preview.gif)
 
 We provide an online portal where book enthusiasts can immerse themselves in a rich community of literary reviews. Readers can effortlessly search for reviews on their favorite books and explore a diverse array of opinions. Users can also contribute their own reviews, sharing their unique perspectives with others. Whether you're looking to discover new reads or share your thoughts on the latest bestseller, our platform offers a seamless and engaging experience for all.
 
@@ -122,14 +122,14 @@ npm run both
 ##### Discover Reviews Without the Hassle
 
 _At our platform, reading reviews is simple and accessible to all. You don't need to register or login to dive into a wealth of literary insights. Simply search for the title you're interested in, and you'll find a collection of reviews from our community of readers. Whether you're looking for a new book to dive into or exploring opinions on a recent release, our platform offers a seamless reading experience without the need for a login._
-![discover](https://imgur.com/Q738DNE.gif)
+![discover](https://postimage.me/images/2024/07/09/discover.gif)
 
 #### 2. Add Reviews:
 
 ##### Share Your Literary Insights with Us
 
 _To add your reviews to our platform, simply create an account and log in. Once logged in, you can easily share your thoughts on books by posting your reviews. Your contributions will help other readers discover new books and perspectives._
-[![add](https://postimage.me/images/2024/07/04/add.png)](https://postimage.me/image/add.y7vOw)
+![add](https://postimage.me/images/2024/07/09/add.png)
 
 ## Contact
 
