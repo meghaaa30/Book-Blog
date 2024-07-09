@@ -8,7 +8,6 @@ import CloseIcon from '@mui/icons-material/Close';
 
 function Header() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
-  const [isHovered, setIsHovered] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const history = useHistory();
 
@@ -16,14 +15,7 @@ function Header() {
     localStorage.removeItem('auth-token');
     setIsAuth(false);
     history.push('/');
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
+    // closeMenu();
   };
 
   const toggleMenu = () => {
@@ -49,7 +41,7 @@ function Header() {
           <button className="hamburger" onClick={toggleMenu}>
             {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
-          <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+          <div className={`nav-links ${isMenuOpen ? 'open' : 'close'}`}>
             <hr className="nav-divider" />
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3" onClick={closeMenu}>
               <NavLink to="/discover">Discover</NavLink>
@@ -66,14 +58,13 @@ function Header() {
             {isAuth && (
               <>
                 <button
-                  className="ButtonBase-root Button-root Button-text header-navButtons-3 logout-button"
+                  className="ButtonBase-root Button-root Button-text header-navButtons-3"
                   onClick={() => { handleLogout(); closeMenu(); }}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
                 >
-                  {!isHovered && <LogoutIcon />}
-                  {isHovered && <span className="logout-text">Sign Out</span>}
+                  {<LogoutIcon />}
+
                 </button>
+                {/* <hr className="nav-divider" /> */}
               </>
             )}
           </div>

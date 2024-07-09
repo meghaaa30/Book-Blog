@@ -9,8 +9,7 @@
   gap: 20px;
 }
 
-.nav-links a,
-.logout-button {
+.nav-links a {
   color: white;
   text-decoration: none;
 }
@@ -35,6 +34,17 @@
   }
 }
 
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
 @media (max-width: 840px) {
   .nav-links {
     display: none;
@@ -49,13 +59,21 @@
     z-index: 1100;
     padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    animation: slideIn 1s forwards;
+    transition: right 1s ease-in-out, opacity 1s ease-in-out;
   }
 
   .nav-links.open {
     right: 0;
     display: flex;
+    animation: slideIn 1s forwards;
   }
+
+  .nav-links.close {
+    right: -100%;
+    display: flex;
+    animation: slideOut 1s forwards;
+  }
+
 
   .hamburger {
     display: block;
