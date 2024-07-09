@@ -122,6 +122,7 @@ npm run both
 ##### Discover Reviews Without the Hassle
 
 _At our platform, reading reviews is simple and accessible to all. You don't need to register or login to dive into a wealth of literary insights. Simply search for the title you're interested in, and you'll find a collection of reviews from our community of readers. Whether you're looking for a new book to dive into or exploring opinions on a recent release, our platform offers a seamless reading experience without the need for a login._
+
 ![discover](https://postimage.me/images/2024/07/09/discover.gif)
 
 #### 2. Add Reviews:
@@ -129,6 +130,7 @@ _At our platform, reading reviews is simple and accessible to all. You don't nee
 ##### Share Your Literary Insights with Us
 
 _To add your reviews to our platform, simply create an account and log in. Once logged in, you can easily share your thoughts on books by posting your reviews. Your contributions will help other readers discover new books and perspectives._
+
 ![add](https://postimage.me/images/2024/07/09/add.png)
 
 ## Contact
