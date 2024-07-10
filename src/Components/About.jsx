@@ -3,17 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import testimonial from '../assets/images/testimonial.jpg';
+import book from '../assets/images/book.jpg';
 import Footer from './Footer';
 import '../styles/Footer.css';
 
 function About() {
     return (
-        <div>
+        <div className="aboutUs">
             <div className="about">
                 <div className="about-book-blog">
                     <h1 className="about-book-blog-title">About Book-Blog</h1>
-                    <img className='mt-image' src={testimonial} alt='' />
+                    <img className='book-image' src={book} alt='' />
                 </div>
             </div>
             <div className='our-story'>
@@ -25,7 +25,7 @@ function About() {
                 <h1 className='team-title'>Meet Our Team</h1>
                 <div className='team-members'>
                     <div className='megha'>
-                        <img className='member-img' src={testimonial} alt='' />
+                        <img className='member-img' src="https://postimage.me/images/2024/07/10/m.jpg" alt='' />
                         <p className='name'>Megha Sharma</p>
                         <p className='designation'>Founder</p>
                         <p><FontAwesomeIcon icon={faEnvelope} className="mr-3" /> meghasharma4982@gmail.com</p>
@@ -33,7 +33,7 @@ function About() {
                         <a href="http://www.linkedin.com/in/megha-sharma-597a80222" target="_blank" rel="noopener noreferrer" role="button"><LinkedInIcon className="social-link" /></a>
                     </div>
                     <div className='tanishka'>
-                        <img className='member-img' src={testimonial} alt='' />
+                        <img className='member-img' src="https://postimage.me/images/2024/07/10/t.jpg" alt='' />
                         <p className='name'>Tanishka Singh</p>
                         <p className='designation'>Founder</p>
                         <p><FontAwesomeIcon icon={faEnvelope} className="mr-3" /> tanishkasingh2004@gmail.com</p>

@@ -1,3 +1,7 @@
+.aboutUs {
+    background-color: #C19A6B;
+}
+
 .about {
     position: relative;
     text-align: center;
@@ -43,13 +47,13 @@
 }
 
 @media (min-width: 330px) and (max-width: 430px){
-    img.mt-image{
+    img.book-image{
         width: 300px;
     }
 }
 
 @media (max-width: 330px){
-    img.mt-image{
+    img.book-image{
         width: 220px;
     }
 }
@@ -75,7 +79,7 @@
     z-index: 1;
 }
 
-.mt-image {
+.book-image {
     position: absolute;
     top: calc(50% + 70px);
     left: 50%;
@@ -83,6 +87,7 @@
     width: 400px;
     height: 300px;
     z-index: 0;
+    object-fit: cover;
 }
 
 /* @media (min-width: 990px) and (max-width: 1448px){
@@ -96,7 +101,7 @@
     justify-content: center;
     height: auto;
     width: fit-content;
-    background-color: #361a03;
+    background-color: #a76248;
     margin: 20px 80px;
     padding: 20px;
 }
@@ -132,6 +137,7 @@
 .team-title {
     font-size: 3em;
     padding-bottom: 20px;
+    /* color: #80461B; */
 }
 
 .team-members {
@@ -148,7 +154,7 @@
     flex: 0 0 auto;
     margin: 10px 100px;
     padding: 20px;
-    background-color: #361a03;
+    background-color: #80461B;
     border: 1px solid #F5F5DC;
     border-radius: 5px;
     text-align: center;

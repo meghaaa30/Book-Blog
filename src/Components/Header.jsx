@@ -31,11 +31,11 @@ function Header() {
       <header className="Paper-root AppBar-root AppBar-positionStatic AppBar-colorPrimary Paper-elevation4">
         <div className="Toolbar-root Toolbar-regular header-appBar-13 Toolbar-gutters">
           <div className="header-left-4"></div>
-          <NavLink to="/"><img className="header-logo-11" src={logo} alt="logo" /></NavLink>
+          <button className="ButtonBase-root" onClick={closeMenu}><NavLink to="/"><img className="header-logo-11" src={logo} alt="logo" /></NavLink></button>
           <div className="header-vertical-9"></div>
-          <NavLink to="/">
+          <button className="ButtonBase-root Button-text header-navButtons-3" onClick={closeMenu}><NavLink to="/">
             <h5 className="Typography-root header-logo-text">Book-Blog</h5>
-          </NavLink>
+          </NavLink></button>
           <div className="header-empty-6"></div>
           <div className="header-space-8"></div>
           <button className="hamburger" onClick={toggleMenu}>
