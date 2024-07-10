@@ -20,7 +20,7 @@
     font-family: 'Poppins';
     font-size: 4.5rem;
     font-weight: 700;
-    color: #F5F5DC;
+    color: #D2B48C;
     text-align: left;
     margin-bottom: 0;
     padding-bottom: 12px;
@@ -30,7 +30,7 @@
     font-family: 'Poppins';
     font-size: 2.5rem;
     font-weight: 500;
-    color: #F5F5DC;
+    color: #D2B48C;
     text-align: left;
     margin: 0;
 }
@@ -48,7 +48,7 @@
   font-family: Poppins;
   text-decoration: none;
   font-weight: 700;
-  background-color: #361a03;
+  background-color: #D2B48C;
   border: none; 
   border-radius: 8px;
   letter-spacing: 0.02857em;
@@ -57,7 +57,8 @@
 }
 
 .bookstrip-signup-button:hover {
-    background-color:  #6b4423;  
+    background-color: #361a03 ;
+    color: #D2B48C;
 }
 
 .bookstrip-signin-button {
@@ -78,6 +79,14 @@
 .bookstrip-signin-button:hover {
     background-color: transparent;
     color: #F5F5DC;
+}
+
+.bookstrip-signin-button:focus,
+.bookstrip-signin-button:active,
+.bookstrip-signin-button:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
 }
 
 .bookstrip-grid {
@@ -125,14 +134,14 @@ img.img-fluid.shadow-4.about-image {
         font-size: 3rem;
         text-align: center;
         margin-bottom: 10px;
-        color: #361a03;
+        color: #D2B48C;
         
     }
 
     .bookstrip-subtitle {
         font-size: 1.5rem;
         text-align: center;
-        color: #361a03;
+        color: #D2B48C;
     }
 
     .buttons {
@@ -150,7 +159,7 @@ img.img-fluid.shadow-4.about-image {
     }
 
     .bookstrip-signin-button:hover {
-        background-color:  #6b4423;  
+        background-color:  #361a03;  
     }
 
     .bookstrip-grid {
@@ -167,8 +176,9 @@ img.img-fluid.shadow-4.about-image {
         max-width: 130px;
         height: auto;
     }
+
     .bookstrip-signin-button {
-        background-color: #361a03;
+        background-color: #D2B48C;
         text-decoration: none;
     }
 }
@@ -197,13 +207,13 @@ img.img-fluid.shadow-4.about-image {
         font-size: 4.5rem;
         text-align: center;
         margin-bottom: 10px;
-        color: #361a03;
+        color: #D2B48C;
     }
 
     .bookstrip-subtitle {
         font-size: 2.5rem;
         text-align: center;
-        color: #361a03;
+        color: #D2B48C;
     }
 
     .buttons {
@@ -217,11 +227,11 @@ img.img-fluid.shadow-4.about-image {
     .bookstrip-signin-button {
         /* color: #361a03; */
         text-decoration: none;
-         background-color:  #361a03 ; 
+         background-color:  #D2B48C; 
     }
     
     .bookstrip-signin-button:hover {
-        background-color:  #6b4423;  
+        background-color: #361a03;  
     }
 
     .bookstrip-signup-button, .bookstrip-signin-button {

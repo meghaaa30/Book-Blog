@@ -1,4 +1,3 @@
-
 # Book-Blog
 
 _Book-Blog is crafted with a vision to create a vibrant community where book enthusiasts can connect, share, and explore diverse literary perspectives. At Book-Blog, we aim to provide an intuitive user interface that empowers users to effortlessly read and post reviews, fostering a space where readers of all backgrounds can engage and enrich their reading experiences. Whether you're a casual reader or a passionate bibliophile, Book-Blog is your go-to platform for discovering new books and sharing your literary insights._
@@ -115,6 +114,7 @@ Backend & Frontend Server:
 ```sh
 npm run both
 ```
+
 ## Usage
 
 #### 1. Read Reviews:

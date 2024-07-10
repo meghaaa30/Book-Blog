@@ -15,8 +15,7 @@ const Reviews = () => {
             try {
                 const response = await fetch(`${host}/api/addreviews/fetchbookreviews?title=${encodeURIComponent(title)}`, {
                     headers: {
-                        'Content-Type': 'application/json',
-                        //'auth-token':`Bearer ${token}`
+                        'Content-Type': 'application/json'
                     }
                 });
                 const data = await response.json();

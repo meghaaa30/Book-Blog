@@ -55,6 +55,10 @@
 }
 
 .read-reviewed {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
   padding-top: 75px;
   font-family: Poppins;
 }
@@ -81,6 +85,13 @@
   color: #F5F5DC;
 }
 
+.read-reviews:focus,
+.read-reviews:active,
+.read-reviews:focus-visible {
+  background-color: #6b4423 !important;
+  color: #F5F5DC !important;
+  box-shadow: none !important;
+}
 
 .reviews-container{
    padding-top: 100px;
