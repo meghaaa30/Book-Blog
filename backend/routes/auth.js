@@ -49,7 +49,7 @@ router.post('/sign-up', [
             }
         };
 
-        const authtoken = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
+        const authtoken = jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' });
         success = true;
         res.json({ success, authtoken });
 

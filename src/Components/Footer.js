@@ -34,6 +34,7 @@ function Footer() {
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 className="text-uppercase mb-4 font-weight-bold">Follow us</h6>
               <a href="https://github.com/taniishkaaa/Book-Blog" target="_blank" rel="noopener noreferrer" role="button"><GitHubIcon className="footer-icon" /></a>
+              
             </div>
           </div>
         </section>

@@ -3,7 +3,6 @@ import fetchBooks from '../helpers/fetchBooks';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import { BrowserRouter, Link, Route, Switch, useHistory } from "react-router-dom";
-import { MDBBtn } from 'mdb-react-ui-kit';
 import { AuthContext } from '../Context/AuthContext';
 import aboutImage from '../assets/images/about.jpg';
 import infoImage from '../assets/images/info.avif';
@@ -43,7 +42,7 @@ function BookStrip() {
             newBooks[randomIndex] = randomBook;
             setDisplayedBooks(newBooks);
             setCurrentIndex(randomIndex);
-        }, 3000);
+        }, 2000);
 
         return () => clearInterval(interval);
     }, [allBooks, displayedBooks]);
@@ -76,21 +75,17 @@ function BookStrip() {
                                     </p>
                                     {!isAuth ? (
                                         <div className="buttons">
-                                            <Link to="/sign-up" style={{ textDecoration: 'none' }}>
-                                                <MDBBtn
+                                                <button
                                                     className="bookstrip-signup-button"
-                                                    size='lg'
                                                 >
-                                                    Sign Up
-                                                </MDBBtn>
-                                            </Link>
+                                                   <Link to="/sign-up" style={{ textDecoration: 'none' }}> Sign Up</Link> 
+                                                </button>
 
-                                            <MDBBtn
+                                            <button
                                                 className="bookstrip-signin-button"
-                                                size='lg'
                                             >
                                                 <Link to="/sign-in">Sign In</Link>
-                                            </MDBBtn>
+                                            </button>
                                         </div>
                                     ) : null}
                                 </div>

@@ -30,7 +30,7 @@ const Reviews = () => {
     }, [title, setReviews]);
 
     return (
-        <Container className='read-reviewed mt-5'>
+        <Container className='read-reviewed mt-5' >
             <h1 className='text-center mb-4'>Reviews for {title.toUpperCase()}</h1>
             {reviews.length > 0 ? (
                 reviews.map((review) => (
