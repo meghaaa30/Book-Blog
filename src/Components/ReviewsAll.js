@@ -17,10 +17,7 @@ function ReviewsAll() {
     const regex = new RegExp(`\\b${query}\\w*\\b`, 'i');
     return regex.test(review.title.toLowerCase());
   });
-
-
-
-
+  
   const groupedReviews = filteredReviews.reduce((acc, review) => {
     if (!acc[review.title]) {
       acc[review.title] = [];
