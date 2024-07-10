@@ -76,21 +76,17 @@ function BookStrip() {
                                     </p>
                                     {!isAuth ? (
                                         <div className="buttons">
-                                            <Link to="/sign-up" style={{ textDecoration: 'none' }}>
-                                                <MDBBtn
+                                                <button
                                                     className="bookstrip-signup-button"
-                                                    size='lg'
                                                 >
-                                                    Sign Up
-                                                </MDBBtn>
-                                            </Link>
+                                                   <Link to="/sign-up" style={{ textDecoration: 'none' }}> Sign Up</Link> 
+                                                </button>
 
-                                            <MDBBtn
+                                            <button
                                                 className="bookstrip-signin-button"
-                                                size='lg'
                                             >
                                                 <Link to="/sign-in">Sign In</Link>
-                                            </MDBBtn>
+                                            </button>
                                         </div>
                                     ) : null}
                                 </div>

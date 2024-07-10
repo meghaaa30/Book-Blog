@@ -86,13 +86,13 @@
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 370px) {
   .nav-links.open {
     top: 75px;
   }
 }
 
-@media (min-width: 376px) and (max-width: 840px) {
+@media (min-width: 371px) and (max-width: 840px) {
   .nav-links.open {
     top: 56px;
   }
