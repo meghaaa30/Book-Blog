@@ -1,5 +1,5 @@
 .aboutUs {
-    background-color: #C19A6B;
+    background-color: burlywood;
 }
 
 .about {
@@ -61,7 +61,7 @@
 .about-book-blog {
     height: 350px;
     width: 100%;
-    background-color: #361a03;
+    background-color:  #6b4423;
     position: relative;
 }
 
@@ -90,15 +90,8 @@
     object-fit: cover;
 }
 
-/* @media (min-width: 990px) and (max-width: 1448px){
-
-} */
-
 .our-story {
     display: table-cell;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: auto;
     width: fit-content;
     background-color: #a76248;
