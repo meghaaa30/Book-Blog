@@ -160,8 +160,8 @@ img.img-fluid.shadow-4.about-image {
         margin: 5px;
     }
 
-    .bookstrip-signin-button:hover {
-        background-color:#6b4423;  
+    .bookstrip-signin-button:hover, .bookstrip-signup-button:hover {
+        background-color:  #6b4423;  
     }
 
     .bookstrip-grid {
