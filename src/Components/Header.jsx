@@ -15,7 +15,6 @@ function Header() {
     localStorage.removeItem('auth-token');
     setIsAuth(false);
     history.push('/');
-    // closeMenu();
   };
 
   const toggleMenu = () => {
@@ -62,9 +61,7 @@ function Header() {
                   onClick={() => { handleLogout(); closeMenu(); }}
                 >
                   {<LogoutIcon />}
-
                 </button>
-                {/* <hr className="nav-divider" /> */}
               </>
             )}
           </div>
