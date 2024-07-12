@@ -13,6 +13,7 @@ const fetch = (req, res, next) => {
 
     try {
         const data = jwt.verify(token, secret_key);
+        const data = jwt.verify(token, secret_key);
         req.user = data.user;
         next();
     } catch (error) {
