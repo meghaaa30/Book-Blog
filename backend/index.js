@@ -5,8 +5,14 @@ const connectTo = require('./db');
 const app = express();
 const port = 5000;
 
+
+
 // Middleware
-app.use(cors());
+app.use(cors({
+   origin: ["https://book-blog-backend.vercel.app"],
+   methods: ["POST", "GET"], 
+   credentials:true
+}));
 app.use(express.json());
 
 // Routes
