@@ -26,7 +26,7 @@ const Reviews = () => {
         };
 
         fetchReviews();
-    }, [title, setReviews]);
+    }, [title, setReviews, baseUrl]);
 
     return (
         <Container className='read-reviewed mt-5' >
