@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+require('dotenv').config();
 
 export const ReviewContext = createContext();
 
