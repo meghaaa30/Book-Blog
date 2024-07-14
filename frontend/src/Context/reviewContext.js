@@ -3,13 +3,13 @@ import React, { createContext, useState } from 'react';
 export const ReviewContext = createContext();
 
 export const ReviewProvider = (props) => {
-    const host = "http://localhost:5000";
+    const baseUrl = process.env.REACT_APP_BASE_URL;
     const reviewsInitial = [];
 
     const [reviews, setReviews] = useState(reviewsInitial);
 
     const getReview = async () => {
-        const response = await fetch(`${host}/api/addreviews/fetchreviews`, {
+        const response = await fetch(`${baseUrl}/addreviews/fetchreviews`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export const ReviewProvider = (props) => {
         }
 
         try {
-            const response = await fetch(`${host}/api/addreviews/addreview`, {
+            const response = await fetch(`${baseUrl}/addreviews/addreview`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
