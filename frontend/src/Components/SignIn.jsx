@@ -9,6 +9,7 @@ import { Spinner, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 function SignIn() {
     const [message, setMessage] = useState('');
@@ -38,7 +39,7 @@ function SignIn() {
         setLoading(true);
         setMessage('');
         try {
-            const response = await fetch("http://localhost:5000/api/auth/sign-in", {
+            const response = await fetch(`${baseUrl}/auth/sign-in`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -73,7 +74,7 @@ function SignIn() {
         setLoading(true);
         setMessage('');
         try {
-            const response = await fetch('http://localhost:5000/api/auth/googlelogin', {
+            const response = await fetch(`${baseUrl}/auth/googlelogin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
