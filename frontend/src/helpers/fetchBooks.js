@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+const baseUrl = process.env.REACT_APP_BASE_URL;
+
 const fetchBooksVersionFromMongoDB = async () => {
     try {
-        const response = await axios.get('http://localhost:5000/api/books/version');
+        const response = await axios.get('{baseUrl}/books/version');
         return response.data.version;
     } catch (error) {
         console.error(error);
@@ -12,7 +14,7 @@ const fetchBooksVersionFromMongoDB = async () => {
 
 const fetchTitlesAndAuthorsFromMongoDB = async () => {
     try {
-        const response = await axios.get('http://localhost:5000/api/books/titles');
+        const response = await axios.get('{baseUrl}/books/titles');
         return response.data;
     } catch (error) {
         console.error(error);
