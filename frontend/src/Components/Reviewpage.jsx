@@ -4,7 +4,7 @@ import { Card, Container } from 'react-bootstrap';
 import { ReviewContext } from '../Context/reviewContext';
 
 const Reviews = () => {
-    const host = "http://localhost:5000";
+    const baseUrl = process.env.REACT_APP_BASE_URL;
     const location = useLocation();
     const { title } = location.state;
     const Context = useContext(ReviewContext);
@@ -13,7 +13,7 @@ const Reviews = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await fetch(`${host}/api/addreviews/fetchbookreviews?title=${encodeURIComponent(title)}`, {
+                const response = await fetch(`${baseUrl}/addreviews/fetchbookreviews?title=${encodeURIComponent(title)}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
