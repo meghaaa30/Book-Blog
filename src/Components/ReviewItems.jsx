@@ -1,30 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const ReviewItems = ({ title, reviews }) => {
   const history = useHistory();
   const [matchingBook, setMatchingBook] = useState(null);
 
-  const updateCachedBooks = () => {
+  const removePunctuation = (str) => str.replace(/[^\w\d]/g, '').toLowerCase();
+
+  const updateCachedBooks = useCallback(() => {
     const cachedBooks = localStorage.getItem('cachedBooks');
     if (cachedBooks) {
       const books = JSON.parse(cachedBooks);
-      const removePunctuation = (str) => {
-        return str.replace(/[^\w\d]/g, '').toLowerCase();
-      };
       const foundBook = books.find(book => {
         const cachedTitle = removePunctuation(book.title);
         const matchedTitle = removePunctuation(title);
         const matchedAuthors = book.authors.some(author =>
           reviews.some(review =>
-            removePunctuation(author).toLowerCase() === removePunctuation(review.author).toLowerCase()
+            removePunctuation(author) === removePunctuation(review.author)
           )
         );
         return cachedTitle === matchedTitle && matchedAuthors;
       });
       setMatchingBook(foundBook);
     }
-  };
+  }, [title, reviews]);
 
   useEffect(() => {
     updateCachedBooks();
@@ -38,7 +37,7 @@ const ReviewItems = ({ title, reviews }) => {
     return () => {
       window.removeEventListener('reviewAdded', handleReviewAdded);
     };
-  }, [title, reviews]);
+  }, [updateCachedBooks]);
 
   const handleClick = () => {
     history.push({

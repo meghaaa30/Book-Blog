@@ -9,7 +9,7 @@ function ReviewsAll() {
 
   useEffect(() => {
     getReview();
-  }, []);
+  }, [getReview]);
 
   const filteredReviews = reviews.filter((review) => {
     const query = searchQuery.trim().toLowerCase();
