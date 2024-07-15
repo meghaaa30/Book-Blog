@@ -28,11 +28,13 @@ const Reviews = () => {
         fetchReviews();
     }, [title, setReviews, baseUrl]);
 
+    const sortedReviews = [...reviews].sort((a, b) => new Date(b.date) - new Date(a.date));
+    
     return (
         <Container className='read-reviewed mt-5' >
             <h1 className='text-center mb-4'>Reviews for {title.toUpperCase()}</h1>
-            {reviews.length > 0 ? (
-                reviews.map((review) => (
+            {sortedReviews.length > 0 ? (
+                sortedReviews.map((review) => (
                     <Card key={review._id} className='review-card'>
                         <Card.Body>
                             <Card.Text>{review.review}</Card.Text>

@@ -21,7 +21,7 @@ router.get('/fetchbookreviews', async (req, res) => {
             return res.status(400).send('Book title is required');
         }
 
-        const bookReviews = await reviews.find({ title }).populate('user', 'firstName lastName');
+        const bookReviews = await reviews.find({ title }).sort({ date: -1 }).populate('user', 'firstName lastName');
 
         res.json(bookReviews);
     } catch (error) {
